@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
+import { ICocktail } from "../interface";
 
 const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
+
 export function Home() {
-  const [cocktail, setCocktail] = useState<[]>([]);
+  const [cocktail, setCocktail] = useState<ICocktail>();
 
   useEffect(() => {
     const fetchCocktail = async () => {
       try {
         const response = await fetch(API_URL);
-        console.log("API key fetch OK");
         const data = await response.json();
-        console.log(data);
         setCocktail(data.drinks[0]);
       } catch (error) {
         console.log(error);
@@ -22,8 +22,31 @@ export function Home() {
 
   return (
     <div>
-      <h1>Home</h1>
-      <h2>{cocktail.strDrink}</h2>
+      {cocktail && (
+        <>
+          <h1>{cocktail.strDrink}</h1>
+          <h1>{cocktail.strCategory}</h1>
+          <h1>{cocktail.strInstructions}</h1>
+        </>
+      )}
     </div>
   );
 }
+
+// import { useState, useEffect } from "react";
+// import "./App.css";
+
+// function App() {
+//   let [randomCocktail, setRandomCocktail] = useState(null);
+
+//   useEffect(() => {
+//     fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+//       .then((response) => response.json())
+//       .then((data) => setRandomCocktail(data));
+//     console.log(randomCocktail);
+//   }, []);
+
+//   return <div className="App"></div>;
+// }
+
+// export default App;

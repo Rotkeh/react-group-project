@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function SearchPage() {
-  const [cocktail, setCocktail] = useState<any>(null);
+  const [cocktail, setCocktail] = useState<[]>([]);
 
   useEffect(() => {
     const searchTerm = "dry";
@@ -13,8 +13,8 @@ export function SearchPage() {
         );
         const result = await response.json();
         setCocktail(result);
-      } catch (err) {
-        console.log("something went wrong");
+      } catch (error) {
+        console.log(error);
       }
     };
 
