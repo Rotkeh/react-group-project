@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ICocktail } from "../interface";
+import { Link } from "react-router-dom";
 
 const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
@@ -25,8 +26,9 @@ export function Home() {
       {cocktail && (
         <>
           <h1>{cocktail.strDrink}</h1>
-          <h1>{cocktail.strCategory}</h1>
-          <h1>{cocktail.strInstructions}</h1>
+          <h4>{cocktail.strCategory}</h4>
+          <p>{cocktail.strInstructions}</p>
+          <Link to ="/search">Search</Link>
         </>
       )}
     </div>
