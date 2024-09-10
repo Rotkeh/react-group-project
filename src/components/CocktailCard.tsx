@@ -5,8 +5,7 @@ interface CocktailCardProps {
   cocktail: ICocktail;
 }
 
-export function CocktailCard({ detailed = false, cocktail }: CocktailCardProps) {
-
+export function CocktailCard({ detailed = true, cocktail }: CocktailCardProps) {
   // Funktion för att skapa en lista av ingredienser och mått
   const renderIngredients = () => {
     const ingredients = [];
@@ -45,8 +44,8 @@ export function CocktailCard({ detailed = false, cocktail }: CocktailCardProps) 
             {/* Visa detaljer bara om detailed är true, här är det false */}
             {detailed && (
               <>
-                <h4>Category: {cocktail.strCategory}</h4>
-                <ul>{renderIngredients()}</ul>{" "}
+                <h4 className="category">Category: {cocktail.strCategory}</h4>
+                <ul className="ingredients">{renderIngredients()}</ul>
                 <p>{cocktail.strInstructions}</p>
               </>
             )}
@@ -57,14 +56,13 @@ export function CocktailCard({ detailed = false, cocktail }: CocktailCardProps) 
   );
 }
 
-
 //För detaljerad vy:
 // import { CocktailCard } from "../components/CocktailCard";
 
 // export function CocktailDetail() {
 //   return (
 //     <main className="body">
-//       <CocktailCard detailed={true} /> 
+//       <CocktailCard detailed={true} />
 //     </main>
 //   );
 // }
