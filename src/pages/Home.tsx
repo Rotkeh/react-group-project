@@ -22,7 +22,7 @@ export function Home() {
   }, []);
 
   return (
-    <div>
+    <main className="body">
       {cocktail && (
         <>
           <h1>{cocktail.strDrink}</h1>
@@ -31,7 +31,7 @@ export function Home() {
           <Link to ="/search">Search</Link>
         </>
       )}
-    </div>
+    </main>
   );
 }
 
