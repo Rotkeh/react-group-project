@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 export function SearchForm() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   function Search(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
