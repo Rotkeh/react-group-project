@@ -4,7 +4,7 @@ import "../css";
 export function Header() {
     return (
         <header className="header">
-            <h1>Header</h1>
+            <h1>Cocktail Database</h1>
             <Link to={"/"}>Home</Link>
             <Link to={"search"}>Search</Link>
         </header>

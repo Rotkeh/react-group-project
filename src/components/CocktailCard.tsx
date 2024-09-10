@@ -3,7 +3,11 @@ import { ICocktail } from "../interface";
 
 const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
-export function CocktailCard() {
+interface CocktailCardProps {
+  detailed?: boolean;
+}
+
+export function CocktailCard({ detailed = false }: CocktailCardProps) {
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
   useEffect(() => {
     const fetchCocktail = async () => {
@@ -52,12 +56,30 @@ export function CocktailCard() {
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
             />
-            <h4>Category: {cocktail.strCategory}</h4>
-            <ul>{renderIngredients()}</ul>
-            <p>{cocktail.strInstructions}</p>
+
+            {/* Visa detaljer bara om detailed är true, här är det false */}
+            {detailed && (
+              <>
+                <h4>Category: {cocktail.strCategory}</h4>
+                <ul>{renderIngredients()}</ul>{" "}
+                <p>{cocktail.strInstructions}</p>
+              </>
+            )}
           </>
         )}
       </main>
     </>
   );
 }
+
+
+//För detaljerad vy:
+// import { CocktailCard } from "../components/CocktailCard";
+
+// export function CocktailDetail() {
+//   return (
+//     <main className="body">
+//       <CocktailCard detailed={true} /> 
+//     </main>
+//   );
+// }
