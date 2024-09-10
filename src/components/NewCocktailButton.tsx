@@ -9,7 +9,7 @@ interface ButtonProps {
     onNewDrink: (drink: ICocktail) => void;
 }
 
-export function Button({onNewDrink}: ButtonProps) {
+export function NewCocktailButton({onNewDrink}: ButtonProps) {
     const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
 
         // läs in drinkar från APi (eller från useContext?)
@@ -17,11 +17,10 @@ export function Button({onNewDrink}: ButtonProps) {
             try {
                 const response = await fetch(API_URL);
                 const data = await response.json();
-                const cocktail = data.drinks[0]
-                setRandomCocktail(cocktail);
+                setRandomCocktail(data.drinks[0]);
 
                 // skicka tillbaka drinken till föräldern
-                onNewDrink(cocktail);
+                onNewDrink(randomCocktail!);
             } catch (error) {
                 console.error("Error fetching cocktail", error);
             }
