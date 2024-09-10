@@ -1,0 +1,23 @@
+.cocktail-body {
+  background-color: #f1ecdb;
+  padding: 2rem;
+  max-width: 30rem;
+  box-shadow: 0px 0px 27px -7px rgba(122, 122, 122, 0.267);
+  border-radius: 10px;
+  margin: 2rem;
+
+  .cocktail-thumbnail {
+    width: 20rem;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-family: "Rancho", cursive;
+    font-weight: 400;
+  }
+
+  .ingredients {
+    align-self: flex-start;
+  }
+}

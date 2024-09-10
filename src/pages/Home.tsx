@@ -1,54 +1,38 @@
+import { Link } from "react-router-dom";
+import { CocktailCard } from "../components/CocktailCard";
 import { useEffect, useState } from "react";
 import { ICocktail } from "../interface";
-import { Link } from "react-router-dom";
+import { NewCocktailButton } from "../components/NewCocktailButton";
 
 const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
-
 export function Home() {
-  const [cocktail, setCocktail] = useState<ICocktail>();
+  const [randomCocktail, setRandomCocktail] = useState<ICocktail>();
 
   useEffect(() => {
-    const fetchCocktail = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        setCocktail(data.drinks[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchCocktail();
   }, []);
 
+  const fetchCocktail = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      setRandomCocktail(data.drinks[0]);
+
+      // skicka tillbaka drinken till föräldern
+    } catch (error) {
+      console.error("Error fetching cocktail", error);
+    }
+  };
+
   return (
-    <main className="body">
-      {cocktail && (
-        <>
-          <h1>{cocktail.strDrink}</h1>
-          <h4>{cocktail.strCategory}</h4>
-          <p>{cocktail.strInstructions}</p>
-          <Link to ="/search">Search</Link>
-        </>
-      )}
-    </main>
+    <>
+      <main className="body">
+        <CocktailCard cocktail={randomCocktail!} />
+        <NewCocktailButton fetchCocktail={fetchCocktail} />
+        <Link to="/search">Search</Link>
+      </main>
+    </>
   );
 }
 
-// import { useState, useEffect } from "react";
-// import "./App.css";
-
-// function App() {
-//   let [randomCocktail, setRandomCocktail] = useState(null);
-
-//   useEffect(() => {
-//     fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-//       .then((response) => response.json())
-//       .then((data) => setRandomCocktail(data));
-//     console.log(randomCocktail);
-//   }, []);
-
-//   return <div className="App"></div>;
-// }
-
-// export default App;

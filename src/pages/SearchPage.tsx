@@ -13,3 +13,9 @@ export function SearchPage() {
     </div>
   );
 }
+
+
+
+// Användare ska kunna söka efter en cocktail med hjälp av dess namn.
+// Resultaten ska visas i en lista med max 10 resultat, och listan ska vara paginerad om det finns fler än 10 resultat.
+// Vid klick på en cocktail i listan ska användaren navigeras till Cocktail Info Page.
