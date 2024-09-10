@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
 import { ICocktail } from "../interface";
-
-const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 interface CocktailCardProps {
   detailed?: boolean;
+  cocktail: ICocktail;
 }
 
-export function CocktailCard({ detailed = false }: CocktailCardProps) {
-  const [cocktail, setCocktail] = useState<ICocktail | null>(null);
-  useEffect(() => {
-    const fetchCocktail = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        setCocktail(data.drinks[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchCocktail();
-  }, []);
+export function CocktailCard({ detailed = false, cocktail }: CocktailCardProps) {
 
   // Funktion för att skapa en lista av ingredienser och mått
   const renderIngredients = () => {
@@ -43,7 +28,7 @@ export function CocktailCard({ detailed = false }: CocktailCardProps) {
     return ingredients;
   };
 
-  //Loopen itererar över ingredienser och mått i samma ordning och parvis, vilket säkerställer rätt måll till rätt ingrediens
+  //Loopen itererar över ingredienser och mått i samma ordning och parvis, vilket säkerställer rätt mått till rätt ingrediens
 
   return (
     <>
