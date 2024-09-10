@@ -52,3 +52,13 @@ export interface ICocktail {
   strCreativeCommonsConfirmed: string;
   dateModified: string;
 }
+
+export interface CachedSearch {
+  search: string;
+  cocktails: ICocktail[];
+}
+
+export interface ICachedSearchesContext {
+  cachedSearches: CachedSearch[];
+  addCachedSearches: (search: CachedSearch) => void;
+}
