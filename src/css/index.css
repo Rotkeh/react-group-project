@@ -5,15 +5,22 @@
   line-height: 1.5;
   font-weight: 400;
   color: black;
-  background-color: #fefcf3;
-  margin: 0 auto;
-  text-align: center;
+  background-color: var(--lightest);
+  margin: 0;
+
+  --darkestbrown: #800000;
+  --darkbrown: #982b1c;
+  --darkestbeige: #dad4b5;
+  --darkbeige: #dad4b5;
+  --lightbeige: #f2e8c6;
+  --lightest: #fefcf3;
 }
 
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  margin: 1rem;
 }
 a:hover {
   color: #535bf2;
@@ -21,7 +28,13 @@ a:hover {
 
 body {
   margin: 0;
+}
+
+main {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h1 {
