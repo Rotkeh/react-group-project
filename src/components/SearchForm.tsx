@@ -19,7 +19,7 @@ export function SearchForm() {
     });
   }
   return (
-    <div>
+    <>
       <form onSubmit={(e) => Search(e)}>
         <select name="category" id="">
           <option value="">All</option>
@@ -53,6 +53,6 @@ export function SearchForm() {
         />
         <button type="submit">Search</button>
       </form>
-    </div>
+    </>
   );
 }

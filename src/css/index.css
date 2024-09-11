@@ -1,6 +1,7 @@
 @import url(./Header.css);
 @import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+@import url("https://fonts.bunny.net/css?family=arima-madurai:400");
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -72,7 +73,23 @@ footer {
   justify-content: space-between;
   border-top: 1px solid #531810;
 
+  .footer-links {
+    margin-top: 0.5rem;
+  }
+
   a {
     font-size: 2rem;
+    font-family: "Arima Madurai", display;
+    font-weight: 500;
+  }
+  @media (max-width: 600px) {
+    justify-content: center;
+
+    p {
+      display: none;
+    }
+    a {
+      font-size: 1.5rem;
+    }
   }
 }
