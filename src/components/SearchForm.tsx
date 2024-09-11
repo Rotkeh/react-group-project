@@ -2,14 +2,18 @@ import { useSearchParams } from "react-router-dom";
 
 export function SearchForm() {
   const [, setSearchParams] = useSearchParams();
+
   function Search(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const form = event.target as HTMLFormElement;
     const input = (form.textInput as HTMLInputElement).value;
     const category = (form.category as HTMLSelectElement).value;
     const glass = (form.glass as HTMLSelectElement).value;
     const ingredient = (form.ingredient as HTMLSelectElement).value;
     const alcohol = (form.alcohol as HTMLSelectElement).value;
+
+    // Sets the values from the selectors in the search params
     setSearchParams({
       c: category,
       g: glass,

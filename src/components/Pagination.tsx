@@ -13,28 +13,26 @@ export function Pagination({ data }: IPaginationDataProps) {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [data]);
+  }, [data]); // Every time data changes(we get a new search) the currentPage is reset to 1
 
-  const totalPages = Math.ceil(data.length / 10);
+  const totalPages = Math.ceil(data.length / 10); //Beräkning hur många sidor som kommer finnas totalt - data (antalet cocktails) / 10. Math.ceil för att avrunda uppåt
 
   const startIndex = (currentPage - 1) * 10;
   const currentItems = data.slice(startIndex, startIndex + 10);
 
+  //when a cocktail is clicked navigate to the info page of that cocktail
   const handleClick = (cocktail: ICocktail) => {
     navigate(`/info/${cocktail.idDrink}`);
   };
 
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-
+  // returns the index buttons depending on the amount of results
   const getIndexButtons = () => {
     const buttons = [];
     for (let i = 1; i <= totalPages; i++) {
       buttons.push(
         <button
           key={i}
-          onClick={() => handlePageChange(i)}
+          onClick={() => setCurrentPage(i)}
           className={currentPage === i ? "activeIndex" : ""}
         >
           {i}
@@ -48,7 +46,7 @@ export function Pagination({ data }: IPaginationDataProps) {
     <div className="pagination">
       <div className="pagination-navigation">
         <button
-          onClick={() => handlePageChange(currentPage - 1)}
+          onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
           disabled={currentPage === 1}
         >
           Previous
@@ -57,7 +55,7 @@ export function Pagination({ data }: IPaginationDataProps) {
         {getIndexButtons()}
 
         <button
-          onClick={() => handlePageChange(currentPage + 1)}
+          onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
           disabled={currentPage === totalPages}
         >
           Next
@@ -66,7 +64,7 @@ export function Pagination({ data }: IPaginationDataProps) {
       <div className="cards">
         {currentItems.map((cocktail) => (
           <div key={cocktail.idDrink} onClick={() => handleClick(cocktail)}>
-            <CocktailCard cocktail={cocktail} />
+            <CocktailCard cocktail={cocktail} detailed={false} />
           </div>
         ))}
       </div>

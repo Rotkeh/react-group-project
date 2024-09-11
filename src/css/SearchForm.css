@@ -41,3 +41,7 @@
 .searchHeader {
   text-align: center;
 }
+.searchDisplay p {
+  font-size: 2rem;
+  text-align: center;
+}
