@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ICocktail } from "../interface";
+import { CocktailCard } from "./CocktailCard";
 
 interface IPaginationDataProps {
   data: ICocktail[];
@@ -8,6 +9,10 @@ interface IPaginationDataProps {
 export function Pagination({ data }: IPaginationDataProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data]);
+
   const totalPages = Math.ceil(data.length / 10);
 
   const startIndex = (currentPage - 1) * 10;
@@ -15,6 +20,22 @@ export function Pagination({ data }: IPaginationDataProps) {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+  };
+
+  const getIndexButtons = () => {
+    const buttons = [];
+    for (let i = 1; i <= totalPages; i++) {
+      buttons.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={currentPage === i ? "activeIndex" : ""}
+        >
+          {i}
+        </button>
+      );
+    }
+    return <div>{buttons}</div>;
   };
 
   return (
@@ -26,15 +47,7 @@ export function Pagination({ data }: IPaginationDataProps) {
         Previous
       </button>
 
-      {Array.from({ length: totalPages }, (_, index) => (
-        <button
-          key={index}
-          onClick={() => handlePageChange(index + 1)}
-          className={currentPage === index + 1 ? "active" : ""}
-        >
-          {index + 1}
-        </button>
-      ))}
+      {getIndexButtons()}
 
       <button
         onClick={() => handlePageChange(currentPage + 1)}
@@ -45,7 +58,7 @@ export function Pagination({ data }: IPaginationDataProps) {
 
       <ul>
         {currentItems.map((cocktail) => (
-          <h2 key={cocktail.idDrink}>{cocktail.strDrink}</h2>
+          <CocktailCard cocktail={cocktail} />
         ))}
       </ul>
     </div>

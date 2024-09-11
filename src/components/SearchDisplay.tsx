@@ -33,6 +33,18 @@ export function SearchDisplay() {
       }
     };
 
+    const fetchDataByFilter = async (item: string, by: string) => {
+      try {
+        const response = await fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${by}=${item}`
+        );
+        const result = await response.json();
+        return result.drinks;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     const filterBySelections = async () => {
       let isSet = false;
       let filtered: ICocktail[] = [];
@@ -85,18 +97,6 @@ export function SearchDisplay() {
       return filtered;
     };
 
-    const fetchDataByFilter = async (item: string, by: string) => {
-      try {
-        const response = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${by}=${item}`
-        );
-        const result = await response.json();
-        return result.drinks;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     function filterCocktails() {
       let filtered = cocktails;
       if (category) {
@@ -146,15 +146,14 @@ export function SearchDisplay() {
           setCocktails(filterCocktails);
         }
       } else if (category || glass || ingredient || alcohol) {
-        const filteredCocktails = await filterBySelections(); // Use 'await' here
-        setCocktails(filteredCocktails); // This will now be the resolved array
+        const filteredCocktails = await filterBySelections();
+        setCocktails(filteredCocktails);
       } else {
         setCocktails([]);
-        console.log("enter search");
       }
     };
 
-    runSearch(); // Call the async function
+    runSearch();
   }, [searchParams]);
   return (
     <>
