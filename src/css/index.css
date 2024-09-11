@@ -70,6 +70,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid #531810;
 
-
+  a {
+    font-size: 2rem;
+  }
 }
