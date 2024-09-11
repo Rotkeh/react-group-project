@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { ICocktail } from "../interface";
 import { useSearchParams } from "react-router-dom";
@@ -5,16 +6,14 @@ import { CachedSearchesContext } from "../context/CachedSearchesContext";
 import { Pagination } from "./Pagination";
 
 export function SearchDisplay() {
-  const [cocktails, setCocktails] = useState<ICocktail[]>([]);
+  const [cocktails, setCocktails] = useState<ICocktail[]>([]); // Håller cocktails-resultaten, från API eller cachade
 
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams(); // Hämtar de aktuella sökparametrarna från URL (angavs i SearchForm)
 
-  const { cachedSearches, addCachedSearches } = useContext(
-    CachedSearchesContext
-  );
+  const { cachedSearches, addCachedSearches } = useContext(CachedSearchesContext); // Får tillgång till cachade sökningar, eller lägger till mer
 
   useEffect(() => {
-    const searchTerm = searchParams.get("s");
+    const searchTerm = searchParams.get("s"); //Parametrarna hämtas som objekt för at få cocktailnamnet
     const category = searchParams.get("c");
     const glass = searchParams.get("g");
     const ingredient = searchParams.get("i");
@@ -23,16 +22,17 @@ export function SearchDisplay() {
     const fetchDataFromSearch = async () => {
       try {
         const response = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`
+          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}` // Använder searchTerm från URL-parametrarna för att hämta matchad sökning
         );
         const result = await response.json();
-        addCachedSearches({ search: searchTerm!, cocktails: result.drinks });
-        setCocktails(result.drinks);
+        addCachedSearches({ search: searchTerm!, cocktails: result.drinks }); // Cacha sökningen
+        setCocktails(result.drinks); // Uppdatera state-variabeln cocktails - Spara resultaten
       } catch (error) {
         console.log(error);
       }
     };
 
+    //Hämta cocktails vid filtrering
     const fetchDataByFilter = async (item: string, by: string) => {
       try {
         const response = await fetch(
@@ -45,6 +45,7 @@ export function SearchDisplay() {
       }
     };
 
+    //Filtrera efter kategori (när användaren inte angett sökord)
     const filterBySelections = async () => {
       let isSet = false;
       let filtered: ICocktail[] = [];
@@ -55,13 +56,14 @@ export function SearchDisplay() {
       if (glass) {
         const glassCocktails = await fetchDataByFilter(glass, "g");
         if (!isSet) {
+          // Om detta är det första filtret som tillämpas (isSet är fortfarande false), sätts filtered till resultatet från glasfiltreringen och vi sätter isSet till true
           filtered = glassCocktails;
           isSet = true;
         } else {
+          //Om en kategori redan valts filtrerar vi vidare genom att bara behålla de cocktails som finns i båda kategorierna. Detta görs genom att jämföra varje cocktail baserat på dess idDrink
           filtered = filtered.filter((filteredCocktail) =>
             glassCocktails.some(
-              (glassCocktail: ICocktail) =>
-                filteredCocktail.idDrink === glassCocktail.idDrink
+              (glassCocktail: ICocktail) => filteredCocktail.idDrink === glassCocktail.idDrink
             )
           );
         }
@@ -88,21 +90,20 @@ export function SearchDisplay() {
         } else {
           filtered = filtered.filter((filteredCocktail) =>
             alcoholCocktails.some(
-              (alcoholCocktail: ICocktail) =>
-                filteredCocktail.idDrink === alcoholCocktail.idDrink
+              (alcoholCocktail: ICocktail) => filteredCocktail.idDrink === alcoholCocktail.idDrink
             )
           );
         }
       }
       return filtered;
+      // Efter att alla filter har bearbetats returneras den slutgiltiga listan över filtrerade cocktails som matchar användarens val
     };
 
+    //Funktion som används när användaren har angett ett sökord (cocktailnamn) och vi redan har en lista med cocktails.
     function filterCocktails() {
       let filtered = cocktails;
       if (category) {
-        filtered = filtered.filter(
-          (cocktail) => cocktail.strCategory === category
-        );
+        filtered = filtered.filter((cocktail) => cocktail.strCategory === category);
       }
       if (glass) {
         filtered = filtered.filter((cocktail) => cocktail.strGlass === glass);
@@ -120,27 +121,21 @@ export function SearchDisplay() {
       }
 
       if (ingredient) {
-        filtered = filtered.filter((cocktail) =>
-          getIngredients(cocktail).includes(ingredient)
-        );
+        filtered = filtered.filter((cocktail) => getIngredients(cocktail).includes(ingredient));
       }
       if (alcohol) {
-        filtered = filtered.filter(
-          (cocktail) => cocktail.strAlcoholic === alcohol
-        );
+        filtered = filtered.filter((cocktail) => cocktail.strAlcoholic === alcohol);
       }
       return filtered;
     }
 
     const runSearch = async () => {
       if (searchTerm) {
-        const cached = cachedSearches.find(
-          (cachedSearch) => cachedSearch.search === searchTerm
-        );
+        const cached = cachedSearches.find((cachedSearch) => cachedSearch.search === searchTerm);
         if (cached) {
-          setCocktails(cached.cocktails);
+          setCocktails(cached.cocktails); // Använd cachade resultat om de finns
         } else {
-          await fetchDataFromSearch();
+          await fetchDataFromSearch(); // Annars hämta från API:et
         }
         if (category || glass || ingredient || alcohol) {
           setCocktails(filterCocktails);
@@ -154,7 +149,7 @@ export function SearchDisplay() {
     };
 
     runSearch();
-  }, [searchParams]);
+  }, [searchParams]); // Kör när sökparametrarna (i URL:en) ändras
   return (
     <>
       <div>
