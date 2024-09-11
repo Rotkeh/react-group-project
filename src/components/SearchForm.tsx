@@ -74,5 +74,6 @@ export function SearchForm() {
         </div>
       </form>
     </>
+    </>
   );
 }

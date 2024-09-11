@@ -5,6 +5,7 @@ interface CocktailCardProps {
   cocktail: ICocktail;
 }
 
+//ändra till "detailed = false" senare
 export function CocktailCard({ detailed = true, cocktail }: CocktailCardProps) {
   // Funktion för att skapa en lista av ingredienser och mått
   const renderIngredients = () => {

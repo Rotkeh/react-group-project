@@ -1,6 +1,5 @@
 // Prop för att returnera den hämtade drinken till förälder-komponeneten
 interface ButtonProps {
-  // onNewDrink: (drink: ICocktail) => void;
   fetchCocktail: () => void;
 }
 

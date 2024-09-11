@@ -15,7 +15,7 @@ export function SearchDisplay() {
   ); // Får tillgång till cachade sökningar, eller lägger till mer
 
   useEffect(() => {
-    const searchTerm = searchParams.get("s"); //Parametrarna hämtas som objekt för at få cocktailnamnet
+    const searchTerm = searchParams.get("s"); //Parametrarna hämtas som objekt för att få cocktailnamnet
     const category = searchParams.get("c");
     const glass = searchParams.get("g");
     const ingredient = searchParams.get("i");
