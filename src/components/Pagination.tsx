@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ICocktail } from "../interface";
 import { CocktailCard } from "./CocktailCard";
+import { useNavigate } from "react-router-dom";
 
 interface IPaginationDataProps {
   data: ICocktail[];
@@ -8,6 +9,7 @@ interface IPaginationDataProps {
 
 export function Pagination({ data }: IPaginationDataProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentPage(1);
@@ -17,6 +19,10 @@ export function Pagination({ data }: IPaginationDataProps) {
 
   const startIndex = (currentPage - 1) * 10;
   const currentItems = data.slice(startIndex, startIndex + 10);
+
+  const handleClick = (cocktail: ICocktail) => {
+    navigate(`/info/${cocktail.idDrink}`);
+  };
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -39,28 +45,31 @@ export function Pagination({ data }: IPaginationDataProps) {
   };
 
   return (
-    <div>
-      <button
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        Previous
-      </button>
+    <div className="pagination">
+      <div className="pagination-navigation">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
 
-      {getIndexButtons()}
+        {getIndexButtons()}
 
-      <button
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        Next
-      </button>
-
-      <ul>
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
+      <div className="cards">
         {currentItems.map((cocktail) => (
-          <CocktailCard cocktail={cocktail} />
+          <div key={cocktail.idDrink} onClick={() => handleClick(cocktail)}>
+            <CocktailCard cocktail={cocktail} />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
