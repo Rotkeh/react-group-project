@@ -109,7 +109,7 @@ export function SearchDisplay() {
       }
 
       function getIngredients(cocktail: ICocktail) {
-        let ingredients = [];
+        const ingredients = [];
         for (let i = 1; i <= 15; i++) {
           const ingredient = cocktail[`strIngredient${i}` as keyof ICocktail];
           if (ingredient) {
