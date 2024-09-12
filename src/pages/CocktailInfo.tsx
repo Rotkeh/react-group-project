@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ICocktail } from "../interface";
 import { CocktailCard } from "../components/CocktailCard";
+import { Loader } from "../components/Loader";
 
 export function CocktailInfo() {
   const { id } = useParams<{ id: string }>();
   const [cocktail, setCocktail] = useState<ICocktail>();
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   useEffect(() => {
     const fetchDataFromId = async () => {
       try {
@@ -13,12 +15,18 @@ export function CocktailInfo() {
           `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
         );
         const result = await response.json();
-        setCocktail(result.drinks[0]);
+        if (result) {
+          setCocktail(result.drinks[0]);
+          // setIsLoaded(true);
+          setTimeout(() => setIsLoaded(true), 1000);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     fetchDataFromId();
   }, [id]);
-  return <main>{cocktail ? <CocktailCard showSeeMore={false} cocktail={cocktail} /> : ""}</main>;
+  return (
+    <main>{isLoaded ? <CocktailCard showSeeMore={false} cocktail={cocktail!} /> : <Loader />}</main>
+  );
 }

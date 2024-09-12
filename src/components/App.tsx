@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import "../css/App.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 

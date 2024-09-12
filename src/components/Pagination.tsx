@@ -39,7 +39,7 @@ export function Pagination({ data }: IPaginationDataProps) {
         </button>
       );
     }
-    return <div>{buttons}</div>;
+    return <div className="page-button">{buttons}</div>;
   };
 
   return (

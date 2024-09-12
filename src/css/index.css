@@ -4,21 +4,12 @@
 @import url("https://fonts.bunny.net/css?family=arima-madurai:400");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: black;
-  background-color: var(--lightest);
-  margin: 0;
-
-  --darkestbrown: #800000;
+/* --darkestbrown: #800000;
   --darkbrown: #982b1c;
   --darkestbeige: #dad4b5;
   --darkbeige: #dad4b5;
   --lightbeige: #f2e8c6;
-  --lightest: #fefcf3;
-}
+  --lightest: #fefcf3; */
 
 a {
   color: #800000;
@@ -33,9 +24,28 @@ a {
 a:hover {
   transform: scale(1.1);
 }
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body {
   margin: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: black;
+  background-color: #fefcf3;
+  margin: 0;
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    > div {
+      flex: 1;
+    }
+  }
 
   main {
     display: flex;
@@ -72,10 +82,18 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #531810;
+  margin-top: auto;
+  font-family: "Arima Madurai", display;
+  background-color: #f1ecdb;
 
   .footer-links {
     margin-top: 0.5rem;
+  }
+
+  p {
+    margin-left: 1rem;
+    font-weight: 600;
+    font-size: 20px;
   }
 
   a {
@@ -92,5 +110,39 @@ footer {
     a {
       font-size: 1.5rem;
     }
+  }
+}
+
+.loader {
+  width: 70px;
+  height: 160px;
+  position: relative;
+  margin: 5rem 0;
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px 5px;
+  border-top: 1px solid #bbb6aa;
+  border-bottom: 4px solid #bbb6aa;
+  background: linear-gradient(#612329 0 0) bottom no-repeat content-box, #e4e0d7;
+  mix-blend-mode: darken;
+  animation: l1 1.5s infinite linear;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  inset: -18px calc(50% - 2px) 8px;
+  background: #eb6b3e;
+  transform-origin: bottom;
+  transform: rotate(8deg);
+}
+@keyframes l1 {
+  0% {
+    background-size: 100% 100%;
+  }
+  100% {
+    background-size: 100% 5%;
   }
 }
