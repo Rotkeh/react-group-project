@@ -9,15 +9,28 @@
   .cocktail-thumbnail {
     width: 20rem;
     height: auto;
+
+    @media (max-width: 600px) {
+      width: 15rem;
+    }
   }
 
   h1 {
     font-size: 3.5rem;
     font-family: "Rancho", cursive;
     font-weight: 400;
+
+    @media (max-width: 600px) {
+      font-size: 3rem;
+      text-align: center;
+    }
   }
 
   .ingredients {
     align-self: flex-start;
+  }
+
+  @media (max-width: 600px) {
+    margin: 2.5rem;
   }
 }
