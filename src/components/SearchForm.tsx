@@ -1,7 +1,30 @@
 import { useSearchParams } from "react-router-dom";
+import { Filters } from "../data";
 
 export function SearchForm() {
   const [, setSearchParams] = useSearchParams();
+
+  /**
+   * Generates a list of `<option>` elements based on the specified filter type.
+   *
+   * @param {("glass" | "categories" | "ingredients" | "alcohol")} filterType - The type of filter to generate options for. Can be "glass", "categories", "ingredients", or "alcohol".
+   *
+   * @returns {JSX.Element} A JSX fragment containing an array of `<option>` elements corresponding to the selected filter type.
+   */
+  const getFilters = (
+    filterType: "glass" | "categories" | "ingredients" | "alcohol"
+  ) => {
+    const filters = Filters[filterType];
+    const options: JSX.Element[] = [];
+    filters.forEach((filter) => {
+      options.push(
+        <option value={filter} key={filter}>
+          {filter}
+        </option>
+      );
+    });
+    return <>{options}</>;
+  };
 
   function Search(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,34 +53,28 @@ export function SearchForm() {
             <label htmlFor="searchCategory">Category</label>
             <select name="category" id="searchCategory">
               <option value="">All</option>
-              <option value="Cocktail">Cocktail</option>
-              <option value="Shake">Shake</option>
-              <option value="Punch / Party Drink">Punch / Party Drink</option>
+              {getFilters("categories")}
             </select>
           </div>
           <div className="select-container">
             <label htmlFor="searchGlass">Glass</label>
             <select name="glass" id="searchGlass">
               <option value="">All</option>
-              <option value="Beer Glass">Beer Glass</option>
-              <option value="Coffee mug">Coffee mug</option>
-              <option value="Margarita/Coupette glass">Margarita/Coupette glass</option>
+              {getFilters("glass")}
             </select>
           </div>
           <div className="select-container">
             <label htmlFor="searchIngredient">Ingredient</label>
             <select name="ingredient" id="searchIngredient">
               <option value="">All</option>
-              <option value="Gin">Gin</option>
-              <option value="Vodka">Vodka</option>
+              {getFilters("ingredients")}
             </select>
           </div>
           <div className="select-container">
             <label htmlFor="searchAlochol">Alcohol</label>
             <select name="alcohol" id="searchAlochol">
               <option value="">All</option>
-              <option value="Alcoholic">Alcoholic</option>
-              <option value="Non alcoholic">Non-alcoholic</option>
+              {getFilters("alcohol")}
             </select>
           </div>
         </div>

@@ -63,6 +63,10 @@
   font-family: "Arima Madurai", display;
   font-size: 2rem;
 }
+.searchDisplay {
+  display: flex;
+  justify-content: center;
+}
 .searchDisplay p {
   font-size: 2rem;
   text-align: center;

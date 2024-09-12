@@ -10,6 +10,8 @@ export function SearchDisplay() {
 
   const [searchParams] = useSearchParams(); // Hämtar de aktuella sökparametrarna från URL (angavs i SearchForm)
 
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const { cachedSearches, addCachedSearches } = useContext(
     CachedSearchesContext
   ); // Får tillgång till cachade sökningar, eller lägger till mer
@@ -183,6 +185,7 @@ export function SearchDisplay() {
     const runSearch = async () => {
       //om en sökterm finns
       if (searchTerm) {
+        setIsLoaded(false);
         const cached = cachedSearches.find(
           (cachedSearch) => cachedSearch.search === searchTerm
         );
@@ -194,11 +197,14 @@ export function SearchDisplay() {
         if (category || glass || ingredient || alcohol) {
           setCocktails(filterCocktails); //Om ett eller flera filter är valda så filtrera sökningen baserat på dom
         }
+        setTimeout(() => setIsLoaded(true), 1000);
       } else if (category || glass || ingredient || alcohol) {
         const filteredCocktails = await filterBySelections(); //Om det inte fanns någon sökterm men ett eller flera filter var valda så hämta data från API:et baserat på dessa
         setCocktails(filteredCocktails);
+        setTimeout(() => setIsLoaded(true), 1000);
       } else {
         setCocktails([]); //om ingen sökterm eller något filter var valt så töm cocktails
+        setIsLoaded(false);
       }
     };
 
@@ -207,7 +213,7 @@ export function SearchDisplay() {
   return (
     <>
       <div className="searchDisplay">
-        {cocktails && cocktails.length > 0 ? (
+        {isLoaded && cocktails && cocktails.length > 0 ? (
           <Pagination data={cocktails} />
         ) : searchParams.size > 0 ? (
           searchParams.get("s") ||
@@ -215,7 +221,11 @@ export function SearchDisplay() {
           searchParams.get("g") ||
           searchParams.get("i") ||
           searchParams.get("a") ? (
-            <p>Search did not match any results</p>
+            isLoaded ? (
+              <p>Search did not match any results</p>
+            ) : (
+              <div className="loader"></div>
+            )
           ) : (
             <p>Enter a search or selection</p>
           )
