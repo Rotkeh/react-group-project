@@ -44,16 +44,17 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
             />
-            {showSeeMore? <Link to={linkUrl}>See more</Link>: ""}
-
+            {showSeeMore ? <Link to={linkUrl}>See more</Link> : ""}
 
             {/* Visa detaljer bara om detailed är true, här är det false */}
             {detailed && (
               <>
-                <p className="category">Category: {cocktail.strCategory}</p>
-                {cocktail.strTags ? <p className="tags">Tag(s): {cocktail.strTags}</p> : ""}
-                <p className="glass">Glass: {cocktail.strGlass}</p>
-                <ul className="ingredients">Ingredients: {renderIngredients()}</ul>
+                <div className="drink-info">
+                  <p className="category"><span className="bold">Category: </span>{cocktail.strCategory}</p>
+                  {cocktail.strTags ? <p className="tags"> <span className="bold">Tag(s): </span>{cocktail.strTags}</p> : ""}
+                  <p className="glass"><span className="bold">Glass: </span> {cocktail.strGlass}</p>
+                </div>
+                <ul className="ingredients"><span className="bold">Ingredients: </span>{renderIngredients()}</ul>
                 <p>{cocktail.strInstructions}</p>
               </>
             )}
