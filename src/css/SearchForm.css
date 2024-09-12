@@ -6,6 +6,11 @@
     display: flex;
     justify-content: center;
     column-gap: 1em;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      margin: 0 auto;
+    }
     .select-container {
       width: min-content;
       display: flex;
@@ -17,31 +22,50 @@
     justify-content: center;
     column-gap: 1em;
     margin-top: 1em;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      margin: 1rem auto;
+    }
   }
 
   label {
     font-size: 1.25rem;
     font-weight: bold;
+    font-family: "Lato", system-ui;
   }
   select {
     font-size: 1rem;
   }
   input {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    padding: 0.2rem 0.5rem;
     height: min-content;
     align-self: center;
+    font-family: "Lato", system-ui;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
   }
   button {
     font-size: 1.25rem;
     padding: 0.25em 0.5em;
-    border: 1px solid black;
+    border: 1px solid #531810;
+
+    @media (max-width: 600px) {
+      margin-top: 1rem;
+      max-width: fit-content;
+      align-self: center;
+    }
   }
 }
 
 .searchHeader {
   text-align: center;
+  font-family: "Arima Madurai", display;
+  font-size: 2rem;
 }
 .searchDisplay p {
   font-size: 2rem;
   text-align: center;
+  font-family: "Lato", system-ui;
+  font-family: "Arima Madurai", display;
 }

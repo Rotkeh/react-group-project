@@ -5,7 +5,7 @@ import { CachedSearchesProvider } from "../context/CachedSearchesContext";
 export function SearchPage() {
   return (
     <div>
-      <h1 className="searchHeader">Search Page</h1>
+      <h1 className="searchHeader">Search cocktail</h1>
       <CachedSearchesProvider>
         <SearchForm />
         <SearchDisplay />

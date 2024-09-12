@@ -8,6 +8,7 @@
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 3rem 6rem;
     grid-auto-rows: auto;
     column-gap: 1em;
     row-gap: 1em;
@@ -17,16 +18,24 @@
       height: 100%;
 
       .cocktail-thumbnail {
-        width: 100%;
+        width: 80%;
       }
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        margin: 1rem;
+        text-align: center;
       }
+    }
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
     }
   }
 }
 
 .activeIndex {
-  background-color: aquamarine;
+  background-color: #dad4b5;
 }

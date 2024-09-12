@@ -59,6 +59,6 @@ export interface CachedSearch {
 }
 
 export interface ICachedSearchesContext {
-  cachedSearches: CachedSearch[];
-  addCachedSearches: (search: CachedSearch) => void;
+  cachedSearches: CachedSearch[]; //En array av tidigare sökningar (cachade sökningar)
+  addCachedSearches: (search: CachedSearch) => void; //Funktion som lägger till en ny sökning till cachen
 }

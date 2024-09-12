@@ -122,7 +122,7 @@ export function SearchDisplay() {
       // Efter att alla filter har bearbetats returneras den slutgiltiga listan över filtrerade cocktails som matchar användarens val
     };
 
-    //Funktion som används när användaren har angett ett sökord (cocktailnamn) och vi har också valt ett eller flera filter.
+    //Funktion som används när användaren har angett ett sökord (cocktailnamn) och har valt ett eller flera filter.
     /**
      * Filters an array of cocktail objects based on selected criteria: category, glass type, ingredient, and alcohol content.
      * @description The function applies the following filters sequentially:

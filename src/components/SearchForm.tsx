@@ -41,9 +41,7 @@ export function SearchForm() {
               <option value="">All</option>
               <option value="Beer Glass">Beer Glass</option>
               <option value="Coffee mug">Coffee mug</option>
-              <option value="Margarita/Coupette glass">
-                Margarita/Coupette glass
-              </option>
+              <option value="Margarita/Coupette glass">Margarita/Coupette glass</option>
             </select>
           </div>
           <div className="select-container">
@@ -55,25 +53,20 @@ export function SearchForm() {
             </select>
           </div>
           <div className="select-container">
-            <label htmlFor="searchAlochol">Alochol</label>
+            <label htmlFor="searchAlochol">Alcohol</label>
             <select name="alcohol" id="searchAlochol">
               <option value="">All</option>
               <option value="Alcoholic">Alcoholic</option>
-              <option value="Non alcoholic">Non alcoholic</option>
+              <option value="Non alcoholic">Non-alcoholic</option>
             </select>
           </div>
         </div>
 
         <div className="search-container">
-          <input
-            name="textInput"
-            type="text"
-            placeholder="search for a cocktail"
-          />
+          <input name="textInput" type="text" placeholder="Cocktail name" />
           <button type="submit">Search</button>
         </div>
       </form>
-    </>
     </>
   );
 }

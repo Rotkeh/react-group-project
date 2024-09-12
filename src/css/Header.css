@@ -8,9 +8,18 @@
   align-items: center;
   color: #f0cca4;
   border-bottom: 2px solid #531810;
+  .logo {
+    display: flex;
+    align-items: center;
 
+    img {
+      width: 15%;
+      margin: 1rem;
+      border-radius: 100%;
+    }
+  }
   h1 {
-    padding: 2rem;
+    padding: 1.2rem;
     font-weight: 400;
     font-size: 4rem;
     margin: 0;
@@ -36,6 +45,12 @@
       margin: 0 0 0.5rem 0;
     }
 
+    .logo {
+      flex-direction: column;
+      img {
+        width: 30%;
+      }
+    }
     h1 {
       font-size: 3.5rem;
     }
