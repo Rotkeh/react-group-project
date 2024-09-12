@@ -28,11 +28,11 @@ export function Home() {
   return (
     <>
       <main className="body">
-        <CocktailCard cocktail={randomCocktail!} />
+        {randomCocktail ? <CocktailCard detailed={false} cocktail={randomCocktail!} /> : ""}
+
         <NewCocktailButton fetchCocktail={fetchCocktail} />
         <Link to="/search">Search</Link>
       </main>
     </>
   );
 }
-

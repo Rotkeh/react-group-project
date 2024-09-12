@@ -63,8 +63,12 @@ export function Pagination({ data }: IPaginationDataProps) {
       </div>
       <div className="cards">
         {currentItems.map((cocktail) => (
-          <div key={cocktail.idDrink} onClick={() => handleClick(cocktail)}>
-            <CocktailCard cocktail={cocktail} detailed={false} />
+          <div
+            key={cocktail.idDrink}
+            className="cocktail-card"
+            onClick={() => handleClick(cocktail)}
+          >
+            <CocktailCard showSeeMore={false} cocktail={cocktail} detailed={false} />
           </div>
         ))}
       </div>

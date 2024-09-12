@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
 import { ICocktail } from "../interface";
 
 interface CocktailCardProps {
   detailed?: boolean;
+  showSeeMore?: boolean;
   cocktail: ICocktail;
 }
 
 //ändra till "detailed = false" senare
-export function CocktailCard({ detailed = true, cocktail }: CocktailCardProps) {
+export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
+  const linkUrl = `/info/${cocktail.idDrink}`;
   // Funktion för att skapa en lista av ingredienser och mått
   const renderIngredients = () => {
     const ingredients = [];
@@ -41,12 +44,16 @@ export function CocktailCard({ detailed = true, cocktail }: CocktailCardProps) {
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
             />
+            {showSeeMore? <Link to={linkUrl}>See more</Link>: ""}
+
 
             {/* Visa detaljer bara om detailed är true, här är det false */}
             {detailed && (
               <>
-                <h4 className="category">Category: {cocktail.strCategory}</h4>
-                <ul className="ingredients">{renderIngredients()}</ul>
+                <p className="category">Category: {cocktail.strCategory}</p>
+                {cocktail.strTags ? <p className="tags">Tag(s): {cocktail.strTags}</p> : ""}
+                <p className="glass">Glass: {cocktail.strGlass}</p>
+                <ul className="ingredients">Ingredients: {renderIngredients()}</ul>
                 <p>{cocktail.strInstructions}</p>
               </>
             )}

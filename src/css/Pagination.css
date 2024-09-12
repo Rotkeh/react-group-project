@@ -4,6 +4,22 @@
     column-gap: 1em;
     justify-content: center;
     margin-bottom: 2em;
+
+    button {
+      margin: 5px;
+    }
+
+    @media (max-width: 900px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        width: fit-content;
+        margin: 3px;
+        padding: 0.3em 1rem;
+      }
+    }
   }
   .cards {
     display: grid;
@@ -12,10 +28,19 @@
     grid-auto-rows: auto;
     column-gap: 1em;
     row-gap: 1em;
+
+    .cocktail-card {
+      transition: transform 0.3s ease;
+    }
+    .cocktail-card:hover {
+      transform: scale(1.05);
+    }
+
     .cocktail-body {
       padding: 0;
       margin: 0;
       height: 100%;
+      cursor: pointer;
 
       .cocktail-thumbnail {
         width: 80%;
@@ -25,6 +50,10 @@
         font-size: 2.2rem;
         margin: 1rem;
         text-align: center;
+
+        @media (max-width: 900px) {
+          font-size: 2rem;
+        }
       }
     }
     @media (max-width: 900px) {
@@ -32,6 +61,11 @@
     }
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
+
+      .pagination-navigation {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

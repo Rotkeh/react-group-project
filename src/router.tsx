@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import { App } from "./components";
-import { Home, SearchPage } from "./pages";
+import { Home, SearchPage, CocktailInfo } from "./pages";
 import { NotFound } from "./pages/NotFound";
 
 export const router = createBrowserRouter(
@@ -12,6 +12,7 @@ export const router = createBrowserRouter(
     <Route element={<App />} path="/">
       <Route index element={<Home />} />
       <Route element={<SearchPage />} path="search" />
+      <Route path="info/:id" element={<CocktailInfo />}/>
       <Route path="*" element={<NotFound />} />
     </Route>
   )
