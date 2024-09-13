@@ -46,15 +46,31 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
             />
             {showSeeMore ? <Link to={linkUrl}>See more</Link> : ""}
 
-            {/* Visa detaljer bara om detailed är true, här är det false */}
+            {/* Visa detaljer bara om detailed är true */}
             {detailed && (
               <>
                 <div className="drink-info">
-                  <p className="category"><span className="bold">Category: </span>{cocktail.strCategory}</p>
-                  {cocktail.strTags ? <p className="tags"> <span className="bold">Tag(s): </span>{cocktail.strTags}</p> : ""}
-                  <p className="glass"><span className="bold">Glass: </span> {cocktail.strGlass}</p>
+                  <p className="category">
+                    <span className="bold">Category: </span>
+                    {cocktail.strCategory}
+                  </p>
+                  {cocktail.strTags ? (
+                    <p className="tags">
+                      {" "}
+                      <span className="bold">Tag(s): </span>
+                      {cocktail.strTags}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  <p className="glass">
+                    <span className="bold">Glass: </span> {cocktail.strGlass}
+                  </p>
                 </div>
-                <ul className="ingredients"><span className="bold">Ingredients: </span>{renderIngredients()}</ul>
+                <ul className="ingredients">
+                  <span className="bold">Ingredients: </span>
+                  {renderIngredients()}
+                </ul>
                 <p>{cocktail.strInstructions}</p>
               </>
             )}
@@ -64,14 +80,3 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
     </>
   );
 }
-
-//För detaljerad vy:
-// import { CocktailCard } from "../components/CocktailCard";
-
-// export function CocktailDetail() {
-//   return (
-//     <main className="body">
-//       <CocktailCard detailed={true} />
-//     </main>
-//   );
-// }
