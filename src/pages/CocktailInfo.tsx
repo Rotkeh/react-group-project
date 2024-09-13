@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ICocktail } from "../interface";
 import { CocktailCard } from "../components/CocktailCard";
 import { Loader } from "../components/Loader";
@@ -8,6 +8,8 @@ export function CocktailInfo() {
   const { id } = useParams<{ id: string }>();
   const [cocktail, setCocktail] = useState<ICocktail>();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchDataFromId = async () => {
       try {
@@ -22,11 +24,20 @@ export function CocktailInfo() {
         }
       } catch (error) {
         console.log(error);
+        if (error instanceof SyntaxError) {
+          navigate(`/info/`);
+        }
       }
     };
     fetchDataFromId();
   }, [id]);
   return (
-    <main>{isLoaded ? <CocktailCard showSeeMore={false} cocktail={cocktail!} /> : <Loader />}</main>
+    <main>
+      {isLoaded ? (
+        <CocktailCard showSeeMore={false} cocktail={cocktail!} />
+      ) : (
+        <Loader />
+      )}
+    </main>
   );
 }
