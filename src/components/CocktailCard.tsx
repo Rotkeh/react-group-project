@@ -39,11 +39,13 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
         {cocktail && (
           <>
             <h1>{cocktail.strDrink}</h1>
-            <img
-              className="cocktail-thumbnail"
-              src={cocktail.strDrinkThumb}
-              alt={cocktail.strDrink}
-            />
+            <figure>
+              <img
+                className="cocktail-thumbnail"
+                src={cocktail.strDrinkThumb}
+                alt={cocktail.strDrink}
+              />
+            </figure>
             {showSeeMore ? <Link to={linkUrl}>See more</Link> : ""}
 
             {/* Visa detaljer bara om detailed är true */}
