@@ -214,7 +214,10 @@ export function SearchDisplay() {
     <>
       <div className="searchDisplay">
         {isLoaded && cocktails && cocktails.length > 0 ? (
-          <Pagination data={cocktails} />
+          <>
+            <p>Results found: {cocktails.length}</p>
+            <Pagination data={cocktails} />
+          </>
         ) : searchParams.size > 0 ? (
           searchParams.get("s") ||
           searchParams.get("c") ||

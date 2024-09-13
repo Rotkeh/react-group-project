@@ -26,15 +26,17 @@ export function SearchForm() {
     return <>{options}</>;
   };
 
-  function Search(event: React.FormEvent<HTMLFormElement>) {
+  function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
-    const input = (form.textInput as HTMLInputElement).value;
+    let input = (form.textInput as HTMLInputElement).value;
     const category = (form.category as HTMLSelectElement).value;
     const glass = (form.glass as HTMLSelectElement).value;
     const ingredient = (form.ingredient as HTMLSelectElement).value;
     const alcohol = (form.alcohol as HTMLSelectElement).value;
+
+    input = input.trim();
 
     // Sets the values from the selectors in the search params
     setSearchParams({
@@ -47,7 +49,7 @@ export function SearchForm() {
   }
   return (
     <>
-      <form className="searchForm" onSubmit={(e) => Search(e)}>
+      <form className="searchForm" onSubmit={(e) => handleSearch(e)}>
         <div className="selectors-container">
           <div className="select-container">
             <label htmlFor="searchCategory">Category</label>
