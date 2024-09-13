@@ -15,7 +15,7 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
     const ingredients = [];
     //for-loopen går från 1 till 15 eftersom varje cocktail kan ha upp till 15 ingredienser.
     for (let i = 1; i <= 15; i++) {
-      //för att dynamiskt hämta egenskaper från cocktailobjektet.
+      //för att dynamiskt hämta egenskaper från cocktailobjektet. "as keyof" möjliggör dynamisk åtkomst till egenskaper på ett typ-säkert sätt.
       const ingredient = cocktail?.[`strIngredient${i}` as keyof ICocktail];
       const measure = cocktail?.[`strMeasure${i}` as keyof ICocktail];
       //Om en ingrediens finns (dvs. inte är null), läggs den till i ingredienslistan tillsammans med sitt mått.

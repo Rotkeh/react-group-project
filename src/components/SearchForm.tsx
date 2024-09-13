@@ -11,9 +11,7 @@ export function SearchForm() {
    *
    * @returns {JSX.Element} A JSX fragment containing an array of `<option>` elements corresponding to the selected filter type.
    */
-  const getFilters = (
-    filterType: "glass" | "categories" | "ingredients" | "alcohol"
-  ) => {
+  const getFilters = (filterType: "glass" | "categories" | "ingredients" | "alcohol") => {
     const filters = Filters[filterType];
     const options: JSX.Element[] = [];
     filters.forEach((filter) => {
@@ -36,7 +34,7 @@ export function SearchForm() {
     const ingredient = (form.ingredient as HTMLSelectElement).value;
     const alcohol = (form.alcohol as HTMLSelectElement).value;
 
-    input = input.trim();
+    input = input.trim(); //Tar bort blanka mellanslag i sökningen
 
     // Sets the values from the selectors in the search params
     setSearchParams({

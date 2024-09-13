@@ -113,6 +113,45 @@ footer {
   }
 }
 
+.not-found {
+  text-align: center;
+  img {
+    max-width: 10rem;
+  }
+  h1,
+  h2 {
+    font-family: "Arima Madurai", display;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 2.2rem;
+    font-family: "Rancho", cursive;
+  }
+
+  @media (max-width: 600px) {
+    img {
+      width: 8rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      text-align: center;
+      margin: 0 3rem 3rem;
+      font-size: 2rem;
+    }
+  }
+}
+
 .loader {
   width: 70px;
   height: 160px;
