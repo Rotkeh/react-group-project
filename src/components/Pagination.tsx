@@ -68,9 +68,28 @@ export function Pagination({ data }: IPaginationDataProps) {
             className="cocktail-card"
             onClick={() => handleClick(cocktail)}
           >
-            <CocktailCard showSeeMore={false} cocktail={cocktail} detailed={false} />
+            <CocktailCard
+              showSeeMore={false}
+              cocktail={cocktail}
+              detailed={false}
+            />
           </div>
         ))}
+      </div>
+      <div className="pagination-navigation">
+        <button
+          onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+
+        <button
+          onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
