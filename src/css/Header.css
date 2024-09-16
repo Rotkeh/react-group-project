@@ -26,6 +26,13 @@
     font-family: "Sacramento", cursive;
   }
 
+  .header-link {
+    color: #f0cca4;
+    a {
+      pointer-events: none;
+      cursor: pointer;
+    }
+  }
   .header-links {
     margin-right: 4rem;
 
@@ -35,14 +42,8 @@
       gap: 1rem;
       color: #f0cca4;
       cursor: pointer;
-      transition: transform 0.3s ease;
-
-      a:hover {
-        transform: scale(1.1);
-      }
     }
   }
-
   @media (max-width: 600px) {
     flex-direction: column;
 
