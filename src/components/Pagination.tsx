@@ -21,8 +21,13 @@ export function Pagination({ data }: IPaginationDataProps) {
   const currentItems = data.slice(startIndex, startIndex + 10);
 
   //when a cocktail is clicked navigate to the info page of that cocktail
-  const handleClick = (cocktail: ICocktail) => {
-    navigate(`/info/${cocktail.idDrink}`);
+  const handleClick = (
+    cocktail: ICocktail,
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    const target = e.target as HTMLElement;
+    if (target.className !== "favoriteButton")
+      navigate(`/info/${cocktail.idDrink}`);
   };
 
   // returns the index buttons depending on the amount of results
@@ -56,7 +61,7 @@ export function Pagination({ data }: IPaginationDataProps) {
 
         <button
           onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages || totalPages === 0}
         >
           Next
         </button>
@@ -66,7 +71,7 @@ export function Pagination({ data }: IPaginationDataProps) {
           <div
             key={cocktail.idDrink}
             className="cocktail-card"
-            onClick={() => handleClick(cocktail)}
+            onClick={(e) => handleClick(cocktail, e)}
           >
             <CocktailCard
               showSeeMore={false}
@@ -86,7 +91,7 @@ export function Pagination({ data }: IPaginationDataProps) {
 
         <button
           onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages || totalPages === 0}
         >
           Next
         </button>

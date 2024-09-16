@@ -10,13 +10,20 @@ interface CocktailCardProps {
 }
 
 //ändra till "detailed = false" senare
-export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
-  const {favorites, addFavorite, removeFavorite} = useContext(FavoriteContext);
+export function CocktailCard({
+  detailed = true,
+  showSeeMore = true,
+  cocktail,
+}: CocktailCardProps) {
+  const { favorites, addFavorite, removeFavorite } =
+    useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
 
   useEffect(() => {
-    setIsFavorite(favorites.some(favorite => favorite.idDrink === cocktail.idDrink));
-  },[]);
+    setIsFavorite(
+      favorites.some((favorite) => favorite.idDrink === cocktail.idDrink)
+    );
+  }, []);
 
   const linkUrl = `/info/${cocktail.idDrink}`;
   // Funktion för att skapa en lista av ingredienser och mått
@@ -43,12 +50,12 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
   const handleAdd = () => {
     addFavorite(cocktail);
     setIsFavorite(true);
-  }
+  };
 
   const handleRemove = () => {
     removeFavorite(cocktail.idDrink);
     setIsFavorite(false);
-  }
+  };
 
   //Loopen itererar över ingredienser och mått i samma ordning och parvis, vilket säkerställer rätt mått till rätt ingrediens
 
@@ -99,8 +106,16 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
                   {renderIngredients()}
                 </ul>
                 <p>{cocktail.strInstructions}</p>
-                {isFavorite ? <button onClick={handleRemove}>Remove from favorites </button> : <button onClick={handleAdd}>Add to favorites </button>}
               </>
+            )}
+            {isFavorite ? (
+              <button className="favoriteButton" onClick={handleRemove}>
+                Remove from favorites{" "}
+              </button>
+            ) : (
+              <button className="favoriteButton" onClick={handleAdd}>
+                Add to favorites{" "}
+              </button>
             )}
           </>
         )}
