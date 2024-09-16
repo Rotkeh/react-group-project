@@ -5,7 +5,7 @@ interface ButtonProps {
 
 export function NewCocktailButton({ fetchCocktail }: ButtonProps) {
   return (
-    <button onClick={fetchCocktail}>
+    <button className="new-cocktail-button" onClick={fetchCocktail}>
       {/*Knappen kommer nu att trigga fetchCocktail när användaren klickar*/}
       Get me a new drink!
     </button>

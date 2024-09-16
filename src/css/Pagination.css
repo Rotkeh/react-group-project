@@ -3,8 +3,8 @@
     display: flex;
     column-gap: 1em;
     justify-content: center;
-    margin-bottom: 2em;
-
+    margin: 2rem 0;
+    
     button {
       margin: 5px;
     }
@@ -26,6 +26,9 @@
         justify-content: center;
         flex-wrap: wrap;
       }
+    }
+    @media (max-width: 600px){
+      margin-top: 1rem;
     }
   }
   .cards {
@@ -78,7 +81,7 @@
     }
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
-      margin: 3rem 4rem;
+      margin: 4rem 1rem;
 
       .pagination-navigation {
         display: flex;

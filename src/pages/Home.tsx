@@ -31,9 +31,6 @@ export function Home() {
         {randomCocktail ? <CocktailCard detailed={false} cocktail={randomCocktail!} /> : ""}
 
         <NewCocktailButton fetchCocktail={fetchCocktail} />
-        <Link to="/search" className="hover-effect">
-          Search
-        </Link>
       </main>
     </>
   );
