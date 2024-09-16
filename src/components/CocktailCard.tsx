@@ -46,7 +46,13 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
                 alt={cocktail.strDrink}
               />
             </figure>
-            {showSeeMore ? <Link to={linkUrl}>See more</Link> : ""}
+            {showSeeMore ? (
+              <Link to={linkUrl} className="hover-effect">
+                See more
+              </Link>
+            ) : (
+              ""
+            )}
 
             {/* Visa detaljer bara om detailed är true */}
             {detailed && (

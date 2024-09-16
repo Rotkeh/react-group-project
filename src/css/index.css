@@ -21,9 +21,10 @@ a {
   font-weight: 500;
 }
 
-a:hover {
+.hover-effect:hover {
   transform: scale(1.1);
 }
+
 html,
 body,
 #root {
