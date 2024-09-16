@@ -18,6 +18,9 @@ export function Header() {
         <Link className="header-link hover-effect" to={"search"}>
           Search
         </Link>
+        <Link className="header-link hover-effect" to={"favorites"}>
+          Favorites
+        </Link>
       </div>
     </header>
   );

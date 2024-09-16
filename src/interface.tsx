@@ -62,3 +62,9 @@ export interface ICachedSearchesContext {
   cachedSearches: CachedSearch[]; //En array av tidigare sökningar (cachade sökningar)
   addCachedSearches: (search: CachedSearch) => void; //Funktion som lägger till en ny sökning till cachen
 }
+
+export interface IFavoritesContext {
+  favorites: ICocktail[];
+  addFavorite: (favorite: ICocktail) => void;
+  removeFavorite: (id: string) => void;
+}

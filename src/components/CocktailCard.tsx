@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ICocktail } from "../interface";
+import { useContext, useEffect, useState } from "react";
+import { FavoriteContext } from "../context/FavoriteContext";
 
 interface CocktailCardProps {
   detailed?: boolean;
@@ -9,6 +11,13 @@ interface CocktailCardProps {
 
 //ändra till "detailed = false" senare
 export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
+  const {favorites, addFavorite, removeFavorite} = useContext(FavoriteContext);
+  const [isFavorite, setIsFavorite] = useState<Boolean>(false);
+
+  useEffect(() => {
+    setIsFavorite(favorites.some(favorite => favorite.idDrink === cocktail.idDrink));
+  },[]);
+
   const linkUrl = `/info/${cocktail.idDrink}`;
   // Funktion för att skapa en lista av ingredienser och mått
   const renderIngredients = () => {
@@ -30,6 +39,16 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
     }
     return ingredients;
   };
+
+  const handleAdd = () => {
+    addFavorite(cocktail);
+    setIsFavorite(true);
+  }
+
+  const handleRemove = () => {
+    removeFavorite(cocktail.idDrink);
+    setIsFavorite(false);
+  }
 
   //Loopen itererar över ingredienser och mått i samma ordning och parvis, vilket säkerställer rätt mått till rätt ingrediens
 
@@ -80,6 +99,7 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
                   {renderIngredients()}
                 </ul>
                 <p>{cocktail.strInstructions}</p>
+                {isFavorite ? <button onClick={handleRemove}>Remove from favorites </button> : <button onClick={handleAdd}>Add to favorites </button>}
               </>
             )}
           </>
