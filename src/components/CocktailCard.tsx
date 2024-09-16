@@ -76,23 +76,33 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
             {/* Visa detaljer bara om detailed är true */}
             {detailed && (
               <>
-                <div className="drink-info">
-                  <p className="category">
-                    <span className="bold">Category: </span>
-                    {cocktail.strCategory}
-                  </p>
-                  {cocktail.strTags ? (
-                    <p className="tags">
-                      {" "}
-                      <span className="bold">Tag(s): </span>
-                      {cocktail.strTags}
+                <div className="drink-container">
+                  <div className="drink-info">
+                    <p className="category">
+                      <span className="bold">Category: </span>
+                      {cocktail.strCategory}
                     </p>
+                    {cocktail.strTags ? (
+                      <p className="tags">
+                        <span className="bold">Tag(s): </span>
+                        {cocktail.strTags}
+                      </p>
+                    ) : (
+                      ""
+                    )}
+                    <p className="glass">
+                      <span className="bold">Glass: </span> {cocktail.strGlass}
+                    </p>
+                  </div>
+                  {isFavorite ? (
+                    <span className="material-icons favoriteButton" onClick={handleRemove}>
+                      favorite
+                    </span>
                   ) : (
-                    ""
+                    <span className="material-icons favoriteButton" onClick={handleAdd}>
+                      favorite_border
+                    </span>
                   )}
-                  <p className="glass">
-                    <span className="bold">Glass: </span> {cocktail.strGlass}
-                  </p>
                 </div>
                 <ul className="ingredients">
                   <span className="bold">Ingredients: </span>
@@ -101,14 +111,18 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
                 <p>{cocktail.strInstructions}</p>
               </>
             )}
-            {isFavorite ? (
-              <button className="favoriteButton" onClick={handleRemove}>
-                <span className="material-icons">favorite</span> Remove from favorites
-              </button>
+            {!detailed ? (
+              isFavorite ? (
+                <span className="material-icons favoriteButton" onClick={handleRemove}>
+                  favorite
+                </span>
+              ) : (
+                <span className="material-icons favoriteButton" onClick={handleAdd}>
+                  favorite_border
+                </span>
+              )
             ) : (
-              <button className="favoriteButton" onClick={handleAdd}>
-                <span className="material-icons">favorite_border</span> Add to favorites
-              </button>
+              ""
             )}
           </>
         )}

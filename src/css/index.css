@@ -78,6 +78,20 @@ button:hover {
   transform: scale(1.1);
 }
 
+/* .material-icons {
+  color: red;
+} */
+
+.favoriteButton {
+  cursor: pointer;
+  color: red;
+  font-size: 60px;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.1);
+}
+
 footer {
   bottom: 0;
   display: flex;
