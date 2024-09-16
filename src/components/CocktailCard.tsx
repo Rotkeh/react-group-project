@@ -10,19 +10,12 @@ interface CocktailCardProps {
 }
 
 //ändra till "detailed = false" senare
-export function CocktailCard({
-  detailed = true,
-  showSeeMore = true,
-  cocktail,
-}: CocktailCardProps) {
-  const { favorites, addFavorite, removeFavorite } =
-    useContext(FavoriteContext);
+export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
+  const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
 
   useEffect(() => {
-    setIsFavorite(
-      favorites.some((favorite) => favorite.idDrink === cocktail.idDrink)
-    );
+    setIsFavorite(favorites.some((favorite) => favorite.idDrink === cocktail.idDrink));
   }, []);
 
   const linkUrl = `/info/${cocktail.idDrink}`;
@@ -110,11 +103,11 @@ export function CocktailCard({
             )}
             {isFavorite ? (
               <button className="favoriteButton" onClick={handleRemove}>
-                Remove from favorites🤍{" "}
+                <span className="material-icons">favorite</span> Remove from favorites
               </button>
             ) : (
               <button className="favoriteButton" onClick={handleAdd}>
-                Add to favorites❤️{" "}
+                <span className="material-icons">favorite_border</span> Add to favorites
               </button>
             )}
           </>
