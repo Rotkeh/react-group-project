@@ -12,10 +12,10 @@ export function Header() {
         </Link>
       </div>
       <div className="header-links">
-        <Link className="header-link" to={"/"}>
+        <Link className="header-link hover-effect" to={"/"}>
           Home
         </Link>
-        <Link className="header-link" to={"search"}>
+        <Link className="header-link hover-effect" to={"search"}>
           Search
         </Link>
       </div>

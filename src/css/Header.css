@@ -28,6 +28,7 @@
 
   .header-link {
     color: #f0cca4;
+    display: inline-block;
     a {
       pointer-events: none;
       cursor: pointer;
