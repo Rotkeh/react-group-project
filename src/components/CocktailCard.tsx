@@ -110,11 +110,11 @@ export function CocktailCard({
             )}
             {isFavorite ? (
               <button className="favoriteButton" onClick={handleRemove}>
-                Remove from favorites{" "}
+                Remove from favorites🤍{" "}
               </button>
             ) : (
               <button className="favoriteButton" onClick={handleAdd}>
-                Add to favorites{" "}
+                Add to favorites❤️{" "}
               </button>
             )}
           </>
