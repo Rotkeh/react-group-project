@@ -26,7 +26,7 @@ export function Pagination({ data }: IPaginationDataProps) {
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     const target = e.target as HTMLElement;
-    if (target.className !== "favoriteButton")
+    if (target.className !== "material-icons favoriteButton")
       navigate(`/info/${cocktail.idDrink}`);
   };
 
