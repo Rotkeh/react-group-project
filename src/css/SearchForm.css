@@ -65,11 +65,20 @@
 }
 .searchDisplay {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .searchDisplay p {
   font-size: 2rem;
   text-align: center;
-  font-family: "Lato", system-ui;
   font-family: "Arima Madurai", display;
 }
+
+p.results-found{
+  font-size: 1.5rem;
+  .bold{
+    font-weight: 600;
+  }
+}
+
+

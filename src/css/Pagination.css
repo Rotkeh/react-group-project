@@ -30,11 +30,10 @@
   }
   .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 3rem 6rem;
     grid-auto-rows: auto;
-    column-gap: 1em;
-    row-gap: 1em;
+    gap: 1rem;
 
     .cocktail-card {
       transition: transform 0.3s ease;
@@ -45,23 +44,32 @@
 
     .cocktail-body {
       padding: 0;
-      margin: 0;
+      margin:  0;
       height: 100%;
       cursor: pointer;
+      justify-content:space-between;
+
+      figure{
+       margin: 1rem;
+       box-sizing: border-box;
+      }
 
       .cocktail-thumbnail {
-        width: 80%;
+        width: 100%;
+
       }
 
       h1 {
         font-size: 2.2rem;
-        margin: 1rem;
+        margin: 2rem 0 0 0;
         text-align: center;
+        
 
         @media (max-width: 900px) {
           font-size: 1.8rem;
         }
       }
+   
     }
 
     @media (max-width: 900px) {
