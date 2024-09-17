@@ -7,6 +7,7 @@ import { App } from "./components";
 import { Home, SearchPage, CocktailInfo, Favorites } from "./pages";
 import { NotFound } from "./pages/NotFound";
 import { fetchCocktail } from "./loaders/LandingPageLoader";
+import { fetchDataFromId } from "./loaders/InfoPageLoader";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,7 +15,12 @@ export const router = createBrowserRouter(
       <Route index element={<Home />} loader={fetchCocktail} />
       <Route element={<SearchPage />} path="search" />
       <Route element={<Favorites />} path="favorites" />
-      <Route path="info/:id" element={<CocktailInfo />} />
+      <Route
+        path="info/:id"
+        element={<CocktailInfo />}
+        loader={fetchDataFromId}
+        errorElement={<NotFound />}
+      />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
