@@ -83,25 +83,25 @@ export function CocktailCard({
             {/* Visa detaljer bara om detailed är true */}
             {detailed && (
               <>
-                <div className="drink-container">
-                  <div className="drink-info">
-                    <span className="bold">{cocktail.strAlcoholic}</span>
+                <section className="drink-container">
+                  <article className="drink-info">
+                    <strong>{cocktail.strAlcoholic}</strong>
                     <p className="category">
-                      <span className="bold">Category: </span>
+                      <strong>Category: </strong>
                       {cocktail.strCategory}
                     </p>
                     {cocktail.strTags ? (
                       <p className="tags">
-                        <span className="bold">Tag(s): </span>
+                        <strong>Tag(s): </strong>
                         {cocktail.strTags}
                       </p>
                     ) : (
                       ""
                     )}
                     <p className="glass">
-                      <span className="bold">Glass: </span> {cocktail.strGlass}
+                      <strong>Glass: </strong> {cocktail.strGlass}
                     </p>
-                  </div>
+                  </article>
                   {isFavorite ? (
                     <span
                       className="material-icons favoriteButton"
@@ -117,7 +117,7 @@ export function CocktailCard({
                       favorite_border
                     </span>
                   )}
-                </div>
+                </section>
                 <ul className="ingredients">
                   <span className="bold">Ingredients: </span>
                   {renderIngredients()}

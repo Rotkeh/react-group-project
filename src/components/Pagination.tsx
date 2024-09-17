@@ -48,7 +48,7 @@ export function Pagination({ data }: IPaginationDataProps) {
   };
 
   return (
-    <div className="pagination">
+    <nav className="pagination">
       <div className="pagination-navigation">
         <button
           onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
@@ -66,7 +66,7 @@ export function Pagination({ data }: IPaginationDataProps) {
           Next
         </button>
       </div>
-      <div className="cards">
+      <section className="cards">
         {currentItems.map((cocktail) => (
           <div
             key={cocktail.idDrink}
@@ -80,8 +80,8 @@ export function Pagination({ data }: IPaginationDataProps) {
             />
           </div>
         ))}
-      </div>
-      <div className="pagination-navigation">
+      </section>
+      <section className="pagination-navigation">
         <button
           onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
           disabled={currentPage === 1}
@@ -95,7 +95,7 @@ export function Pagination({ data }: IPaginationDataProps) {
         >
           Next
         </button>
-      </div>
-    </div>
+      </section>
+    </nav>
   );
 }

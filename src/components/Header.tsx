@@ -5,13 +5,14 @@ import logo from "../assets/logo_1.png";
 export function Header() {
   return (
     <header className="header">
-      <div className="logo">
-        <img src={logo} />
-        <Link className="header-link" to={"/"}>
+      <Link className="header-link" to={"/"}>
+        <div className="logo">
+          <img src={logo} />
           <h1>Cocktail Database</h1>
-        </Link>
-      </div>
-      <div className="header-links">
+        </div>
+      </Link>
+
+      <nav className="header-links">
         <Link className="header-link hover-effect" to={"/"}>
           Home
         </Link>
@@ -21,7 +22,7 @@ export function Header() {
         <Link className="header-link hover-effect" to={"favorites"}>
           Favorites
         </Link>
-      </div>
+      </nav>
     </header>
   );
 }

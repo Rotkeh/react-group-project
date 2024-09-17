@@ -4,10 +4,10 @@ export function Footer() {
   return (
     <footer className="footer">
       <p>Spicy Fighters Inc.</p>
-      <div className="footer-links">
+      <nav className="footer-links">
         <Link to={"/"}>Home</Link>
         <Link to={"search"}>Search</Link>
-      </div>
+      </nav>
     </footer>
   );
 }
