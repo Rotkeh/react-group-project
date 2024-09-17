@@ -10,13 +10,20 @@ interface CocktailCardProps {
 }
 
 //ändra till "detailed = false" senare
-export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
-  const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext);
+export function CocktailCard({
+  detailed = true,
+  showSeeMore = true,
+  cocktail,
+}: CocktailCardProps) {
+  const { favorites, addFavorite, removeFavorite } =
+    useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
 
   useEffect(() => {
-    setIsFavorite(favorites.some((favorite) => favorite.idDrink === cocktail.idDrink));
-  }, []);
+    setIsFavorite(
+      favorites.some((favorite) => favorite.idDrink === cocktail.idDrink)
+    );
+  }, [cocktail]);
 
   const linkUrl = `/info/${cocktail.idDrink}`;
   // Funktion för att skapa en lista av ingredienser och mått
@@ -78,6 +85,7 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
               <>
                 <div className="drink-container">
                   <div className="drink-info">
+                    <span className="bold">{cocktail.strAlcoholic}</span>
                     <p className="category">
                       <span className="bold">Category: </span>
                       {cocktail.strCategory}
@@ -95,11 +103,17 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
                     </p>
                   </div>
                   {isFavorite ? (
-                    <span className="material-icons favoriteButton" onClick={handleRemove}>
+                    <span
+                      className="material-icons favoriteButton"
+                      onClick={handleRemove}
+                    >
                       favorite
                     </span>
                   ) : (
-                    <span className="material-icons favoriteButton" onClick={handleAdd}>
+                    <span
+                      className="material-icons favoriteButton"
+                      onClick={handleAdd}
+                    >
                       favorite_border
                     </span>
                   )}
@@ -113,11 +127,17 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
             )}
             {!detailed ? (
               isFavorite ? (
-                <span className="material-icons favoriteButton" onClick={handleRemove}>
+                <span
+                  className="material-icons favoriteButton"
+                  onClick={handleRemove}
+                >
                   favorite
                 </span>
               ) : (
-                <span className="material-icons favoriteButton" onClick={handleAdd}>
+                <span
+                  className="material-icons favoriteButton"
+                  onClick={handleAdd}
+                >
                   favorite_border
                 </span>
               )
