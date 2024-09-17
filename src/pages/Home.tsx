@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { CocktailCard } from "../components/CocktailCard";
 import { useEffect, useState } from "react";
 import { ICocktail } from "../interface";
