@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { Filters } from "../data";
 
 export function SearchForm() {
-  const [, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams(); //Användaren fyller i sökformuläret och trycker på "Search" - Formulärets värden omvandlas till URL-parametrar med useSearchParams.
 
   /**
    * Generates a list of `<option>` elements based on the specified filter type.
@@ -36,7 +36,7 @@ export function SearchForm() {
 
     input = input.trim(); //Tar bort blanka mellanslag i sökningen
 
-    // Sets the values from the selectors in the search params
+    // setSearchParams för att uppdatera URL-parametrarna baserat på vad användaren angav i formuläret
     setSearchParams({
       c: category,
       g: glass,

@@ -58,6 +58,10 @@
 
     .header-links {
       margin: 0 0 0.5rem 0;
+
+      a {
+        margin: 0.6rem;
+      }
     }
 
     .logo {

@@ -1,12 +1,13 @@
 const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+//Loadern hämtar cocktail-datan när användaren navigerar till "Home"-sidan.
+//useLoaderData i Home.tsx hämtar och tillhandahåller den hämtade drinken till komponenten.
 
 export const fetchCocktail = async () => {
   try {
     const response = await fetch(API_URL);
     const data = await response.json();
-    return data.drinks[0];
+    return data.drinks[0]; // Den första drinken från API-svaret
 
-    // skicka tillbaka drinken till föräldern
   } catch (error) {
     console.error("Error fetching cocktail", error);
   }

@@ -86,7 +86,10 @@ button:hover {
   color: red;
   font-size: 60px;
   margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+
+  @media (max-width: 1000px) and (min-width: 600px) {
+    font-size: 40px;
+  }
 }
 
 .favoriteButton:hover {

@@ -11,7 +11,7 @@
     height: auto;
 
     @media (max-width: 600px) {
-      width: 15rem;
+      width: 13rem;
     }
   }
 
