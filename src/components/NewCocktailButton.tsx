@@ -8,8 +8,8 @@ interface ButtonProps {
 
 export function NewCocktailButton({ buttonFunction }: ButtonProps) {
   async function setNewRandom() {
-    const cocktail = await fetchCocktail();
-    buttonFunction(cocktail);
+    const cocktail = await fetchCocktail(); // Hämta en ny cocktail från API via loadern
+    buttonFunction(cocktail); // Skicka tillbaka cocktailen till föräldern (Home.tsx) som ett argument
   }
 
   return (

@@ -7,7 +7,7 @@ interface IFavoriteProviderProps {
 
 export const FavoriteContext = createContext<IFavoritesContext>(
     {} as IFavoritesContext
-);
+); //Ett kontextobjekt skapas som håller global state som kan delas mellan komponenter.
 
 export function FavoriteProvider({
     children
@@ -23,8 +23,9 @@ export function FavoriteProvider({
     };
 
     return (
-        <FavoriteContext.Provider value={{favorites, addFavorite, removeFavorite}}>
-            {children}
-        </FavoriteContext.Provider>
-    )
+      //Alla barnkomponenter kan med providern använda kontexten och hämta eller manipulera favoriterna.
+      <FavoriteContext.Provider value={{ favorites, addFavorite, removeFavorite }}>
+        {children}
+      </FavoriteContext.Provider>
+    );
 }
