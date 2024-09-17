@@ -212,11 +212,11 @@ export function SearchDisplay() {
   }, [searchParams]); // Kör när sökparametrarna (i URL:en) ändras
   return (
     <>
-      <div className="searchDisplay">
+      <section className="searchDisplay">
         {isLoaded && cocktails && cocktails.length > 0 ? (
           <>
             <p className="results-found">
-              <span className="bold">Results found:</span> {cocktails.length}
+              <strong>Results found:</strong> {cocktails.length}
             </p>
             <Pagination data={cocktails} />
           </>
@@ -237,7 +237,7 @@ export function SearchDisplay() {
         ) : (
           <p>Enter a search</p>
         )}
-      </div>
+      </section>
     </>
   );
 }

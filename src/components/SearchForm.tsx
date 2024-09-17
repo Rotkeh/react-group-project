@@ -48,36 +48,36 @@ export function SearchForm() {
   return (
     <>
       <form className="searchForm" onSubmit={(e) => handleSearch(e)}>
-        <div className="selectors-container">
-          <div className="select-container">
-            <label htmlFor="searchCategory">Category</label>
+        <fieldset className="selectors-container">
+          <label className="select-container" htmlFor="searchCategory">
+            Category
             <select name="category" id="searchCategory">
               <option value="">All</option>
               {getFilters("categories")}
             </select>
-          </div>
-          <div className="select-container">
-            <label htmlFor="searchGlass">Glass</label>
+          </label>
+          <label className="select-container" htmlFor="searchGlass">
+            Glass
             <select name="glass" id="searchGlass">
               <option value="">All</option>
               {getFilters("glass")}
             </select>
-          </div>
-          <div className="select-container">
-            <label htmlFor="searchIngredient">Ingredient</label>
+          </label>
+          <label className="select-container" htmlFor="searchIngredient">
+            Ingredient
             <select name="ingredient" id="searchIngredient">
               <option value="">All</option>
               {getFilters("ingredients")}
             </select>
-          </div>
-          <div className="select-container">
-            <label htmlFor="searchAlochol">Alcohol</label>
+          </label>
+          <label className="select-container" htmlFor="searchAlochol">
+            Alcohol
             <select name="alcohol" id="searchAlochol">
               <option value="">All</option>
               {getFilters("alcohol")}
             </select>
-          </div>
-        </div>
+          </label>
+        </fieldset>
 
         <div className="search-container">
           <input name="textInput" type="text" placeholder="Cocktail name" />
