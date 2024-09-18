@@ -12,20 +12,13 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [loadData, setLoadData] = useState<ICocktail[]>(data.slice(0, 12));
 
-  const handleClick = (
-    cocktail: ICocktail,
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleClick = (cocktail: ICocktail, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLElement;
-    if (target.className !== "material-icons favoriteButton")
-      navigate(`/info/${cocktail.idDrink}`);
+    if (target.className !== "material-icons favoriteButton") navigate(`/info/${cocktail.idDrink}`);
   };
 
   const handleScroll = () => {
-    if (
-      document.body.scrollHeight - 300 <
-      window.scrollY + window.innerHeight
-    ) {
+    if (document.body.scrollHeight - 300 < window.scrollY + window.innerHeight) {
       setLoading(true);
     }
   };
@@ -46,16 +39,12 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
 
   useEffect(() => {
     window.addEventListener("scroll", debounce(handleScroll, 300));
-    return () =>
-      window.removeEventListener("scroll", debounce(handleScroll, 300));
+    return () => window.removeEventListener("scroll", debounce(handleScroll, 300));
   }, []);
 
   useEffect(() => {
     if (loading === true) {
-      setLoadData((prevData) => [
-        ...prevData,
-        ...data.slice(loadData.length, loadData.length + 4),
-      ]);
+      setLoadData((prevData) => [...prevData, ...data.slice(loadData.length, loadData.length + 4)]);
       setLoading(false);
     }
   }, [loading]);
@@ -69,11 +58,7 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
             className="cocktail-card"
             onClick={(e) => handleClick(cocktail, e)}
           >
-            <CocktailCard
-              showSeeMore={false}
-              cocktail={cocktail}
-              detailed={false}
-            />
+            <CocktailCard showSeeMore={false} cocktail={cocktail} detailed={false} />
           </div>
         ))}
       </section>
