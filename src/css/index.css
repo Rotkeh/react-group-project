@@ -209,3 +209,36 @@ footer {
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
+
+/*Scrollbar*/
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f2e8c6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b84e40;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b96458;
+}
+
+::-webkit-scrollbar-button {
+  background: #b96458;
+}
+
+/* ::-webkit-scrollbar the scrollbar.
+::-webkit-scrollbar-button the buttons on the scrollbar (arrows pointing upwards and downwards).
+::-webkit-scrollbar-thumb the draggable scrolling handle.
+::-webkit-scrollbar-track the track (progress bar) of the scrollbar.
+::-webkit-scrollbar-track-piece the track (progress bar) NOT covered by the handle.
+::-webkit-scrollbar-corner the bottom corner of the scrollbar, where both horizontal and vertical scrollbars meet.
+::-webkit-resizer the draggable resizing handle that appears at the bottom corner of some elements. */
