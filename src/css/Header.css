@@ -14,15 +14,13 @@
     gap: 1rem;
     img {
       width: 15%;
-      /* margin: 1rem; */
       border-radius: 100%;
     }
   }
   h1 {
-    padding: 1.2rem;
+    /* padding: 1.2rem; */
     font-weight: 400;
-    /* font-size: 4rem; */
-    font-size: min(max(25px, calc(1.5625rem + ((1vw - 3px) * 5.4622))), 64px);
+    font-size: min(max(42px, calc(2.625rem + ((1vw - 3px) * 2))), 64px);
     min-height: 0vw;
 
     margin: 0;
@@ -39,13 +37,10 @@
     }
   }
   .header-links {
-    /* margin-right: 4rem; */
-    justify-self: flex-end; /*ÄNDRA*/
     display: flex;
     gap: 1.5rem;
     a {
-      /* font-size: 2.5rem; */
-      font-size: min(max(20px, calc(1.25rem + ((1vw - 3px) * 2.8011))), 40px);
+      font-size: min(max(32px, calc(1.25rem + ((1vw - 3px) * 2.8011))), 40px);
       font-family: "Rancho", cursive;
       gap: 1rem;
       color: #f0cca4;
@@ -53,7 +48,7 @@
       margin: 0;
     }
   }
-  @media (max-width: 700px) {
+  @media (max-width: 757px) {
     flex-direction: column;
 
     .header-links {
@@ -71,7 +66,7 @@
       }
     }
     h1 {
-      font-size: 3.5rem;
+      /* font-size: 3.5rem; */
       text-align: center;
     }
   }
