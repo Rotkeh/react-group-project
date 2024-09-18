@@ -48,7 +48,7 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
     window.addEventListener("scroll", debounce(handleScroll, 300));
     return () =>
       window.removeEventListener("scroll", debounce(handleScroll, 300));
-  });
+  }, []);
 
   useEffect(() => {
     if (loading === true) {
@@ -77,7 +77,13 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
           </div>
         ))}
       </section>
-      <button>Till toppen</button>
+      <button
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
+        Till toppen
+      </button>
     </nav>
   );
 }
