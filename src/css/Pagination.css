@@ -1,4 +1,8 @@
 .pagination {
+  display: flex;
+  flex-direction: column;
+
+
   .pagination-navigation {
     display: flex;
     column-gap: 1em;
@@ -34,9 +38,9 @@
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 3rem 6rem;
+    margin: 3rem 6rem 0 6rem;
     grid-auto-rows: auto;
-    gap: 1rem;
+    gap: 2rem;
 
     .cocktail-card {
       transition: transform 0.3s ease;
@@ -77,17 +81,31 @@
 
     @media (max-width: 900px) {
       grid-template-columns: 1fr 1fr;
-      margin: 3rem 4rem;
+      margin: 4rem 3rem 0 3rem;
     }
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
-      margin: 4rem 1rem;
+      margin: 4rem 1rem 0 1rem;
 
       .pagination-navigation {
         display: flex;
         flex-direction: column;
       }
     }
+  }
+  .back-to-top-btn{
+    margin: 2rem 6rem 3rem 6rem;
+    &:hover{
+     transform: scale(1.05);
+     
+    }
+    @media (max-width: 900px) {
+     margin: 2rem 3rem 4rem 3rem;
+   }
+   @media (max-width: 600px) {
+     grid-template-columns: 1fr;
+     margin: 2rem 1rem 4rem 1rem;
+   }
   }
 }
 
