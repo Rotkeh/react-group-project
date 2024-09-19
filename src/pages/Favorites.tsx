@@ -18,11 +18,15 @@ export function Favorites() {
 
   return (
     <main>
-      <button onClick={handleToggle}>Filter Alcohol: {filterAlcohol.toString()}</button>
+      <button onClick={handleToggle}>
+        {filterAlcohol ? "alcohol" : "no alcohol"}
+      </button>
       <Pagination
         data={
           filterAlcohol
-            ? favoriteCocktails.filter((cocktail) => cocktail.strAlcoholic !== "Alcoholic")
+            ? favoriteCocktails.filter(
+                (cocktail) => cocktail.strAlcoholic !== "Alcoholic"
+              )
             : favoriteCocktails
         }
       />
