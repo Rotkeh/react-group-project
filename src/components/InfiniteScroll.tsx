@@ -68,7 +68,7 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
           window.scrollTo(0, 0);
         }}
       >
-        Till toppen
+        Back to top
       </button>
     </nav>
   );
