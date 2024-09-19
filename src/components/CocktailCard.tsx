@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ICocktail } from "../interface";
 import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
+import { fetchDataFromId } from "../loaders/InfoPageLoader";
 
 interface CocktailCardProps {
   detailed?: boolean;
@@ -47,8 +48,16 @@ export function CocktailCard({
     return ingredients;
   };
 
-  const handleAdd = () => {
-    addFavorite(cocktail);
+  const handleAdd = async () => {
+    if (!cocktail.strAlcoholic) {
+      const newCocktail = await fetchDataFromId({
+        params: { id: cocktail.idDrink },
+        request: new Request(""),
+      });
+      addFavorite(newCocktail);
+    } else {
+      addFavorite(cocktail);
+    }
     setIsFavorite(true);
   };
 
