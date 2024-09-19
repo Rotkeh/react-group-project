@@ -7,8 +7,8 @@ export const fetchCocktail = async () => {
     const response = await fetch(API_URL);
     const data = await response.json();
     return data.drinks[0]; // Den första drinken från API-svaret
-
   } catch (error) {
     console.error("Error fetching cocktail", error);
+    alert("failed to fetch data from the api");
   }
 };
