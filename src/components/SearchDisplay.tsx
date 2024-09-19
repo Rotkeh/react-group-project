@@ -191,6 +191,7 @@ export function SearchDisplay() {
      * - If neither a search term nor filters are provided, it clears the cocktail list.
      */
     const runSearch = async () => {
+      setIsLoaded(false);
       //om en sökterm finns
       if (searchTerm) {
         setIsLoaded(false);
@@ -212,7 +213,6 @@ export function SearchDisplay() {
         setTimeout(() => setIsLoaded(true), 1000);
       } else {
         setCocktails([]); //Om ingen sökterm eller något filter var valt så töm cocktails
-        setIsLoaded(false);
       }
     };
 
