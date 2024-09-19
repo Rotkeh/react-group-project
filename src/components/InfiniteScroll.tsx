@@ -62,7 +62,8 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
           </div>
         ))}
       </section>
-      <button
+      <button 
+        className="back-to-top-btn"
         onClick={() => {
           window.scrollTo(0, 0);
         }}
