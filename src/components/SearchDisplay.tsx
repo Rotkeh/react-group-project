@@ -221,7 +221,7 @@ export function SearchDisplay() {
                 setPagination((prev) => !prev);
               }}
             >
-              {pagination ? "Visa alla" : "Visa index"}
+              {pagination ? "Show all" : "Show pagination"}
             </button>
             {pagination ? <Pagination data={cocktails} /> : <InfiniteScroll data={cocktails} />}
           </>
