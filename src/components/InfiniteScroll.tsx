@@ -48,7 +48,7 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
   useEffect(() => {
     if (loading === true) {
       setLoadData((prevData) => [...prevData, ...data.slice(loadData.length, loadData.length + 4)]);
-      setLoading(false);
+      setLoading(false); //loading sätts tillbaka till false när uppdateringen är klar, vilket stoppar ytterligare laddningar tills användaren skrollar igen
     }
   }, [loading]); // När loading blivit true, laddas ytterligare 4 cocktails in från data och läggs till i loadData. Efter det sätts loading tillbaka till false
 
@@ -65,7 +65,7 @@ export function InfiniteScroll({ data }: IPaginationDataProps) {
           </div>
         ))}
       </section>
-      <button 
+      <button
         className="back-to-top-btn"
         onClick={() => {
           window.scrollTo(0, 0);
