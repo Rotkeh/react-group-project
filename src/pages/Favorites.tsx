@@ -18,15 +18,16 @@ export function Favorites() {
 
   return (
     <main>
-      <button onClick={handleToggle}>
-        {filterAlcohol ? "alcohol" : "no alcohol"}
-      </button>
+      <p onClick={handleToggle} className="toggle-alcohol">
+        No alcohol
+        <span className="material-icons">
+          {filterAlcohol ? "radio_button_checked" : "radio_button_unchecked"}
+        </span>
+      </p>
       <Pagination
         data={
           filterAlcohol
-            ? favoriteCocktails.filter(
-                (cocktail) => cocktail.strAlcoholic !== "Alcoholic"
-              )
+            ? favoriteCocktails.filter((cocktail) => cocktail.strAlcoholic !== "Alcoholic")
             : favoriteCocktails
         }
       />
