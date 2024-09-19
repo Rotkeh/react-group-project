@@ -61,6 +61,20 @@ body {
   }
 }
 
+.toggle-alcohol {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.3rem;
+  align-items: stretch;
+  font-family: "Arima Madurai", display;
+  font-weight: 400;
+  justify-content: center;
+
+  span {
+    cursor: pointer;
+  }
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
