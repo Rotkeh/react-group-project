@@ -53,6 +53,12 @@ export interface ICocktail {
   dateModified: string;
 }
 
+export interface CocktailCardProps {
+  detailed?: boolean;
+  showSeeMore?: boolean;
+  cocktail: ICocktail;
+}
+
 export interface CachedSearch {
   search: string;
   cocktails: ICocktail[];

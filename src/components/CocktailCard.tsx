@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
-import { ICocktail } from "../interface";
+import { CocktailCardProps, ICocktail } from "../interface";
 import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
 import { fetchDataFromId } from "../loaders/InfoPageLoader";
 
-interface CocktailCardProps {
-  detailed?: boolean;
-  showSeeMore?: boolean;
-  cocktail: ICocktail;
-}
-
-//ändra till "detailed = false" senare
 export function CocktailCard({
   detailed = true,
   showSeeMore = true,
