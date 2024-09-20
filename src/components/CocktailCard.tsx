@@ -4,19 +4,12 @@ import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
 import { fetchDataFromId } from "../loaders/InfoPageLoader";
 
-export function CocktailCard({
-  detailed = true,
-  showSeeMore = true,
-  cocktail,
-}: CocktailCardProps) {
-  const { favorites, addFavorite, removeFavorite } =
-    useContext(FavoriteContext);
+export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
+  const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
 
   useEffect(() => {
-    setIsFavorite(
-      favorites.some((favorite) => favorite.idDrink === cocktail.idDrink)
-    );
+    setIsFavorite(favorites.some((favorite) => favorite.idDrink === cocktail.idDrink));
   }, [cocktail]);
 
   const linkUrl = `/info/${cocktail.idDrink}`;
@@ -105,41 +98,32 @@ export function CocktailCard({
                     </p>
                   </article>
                   {isFavorite ? (
-                    <span
-                      className="material-icons favoriteButton"
-                      onClick={handleRemove}
-                    >
+                    <span className="material-icons favoriteButton" onClick={handleRemove}>
                       favorite
                     </span>
                   ) : (
-                    <span
-                      className="material-icons favoriteButton"
-                      onClick={handleAdd}
-                    >
+                    <span className="material-icons favoriteButton" onClick={handleAdd}>
                       favorite_border
                     </span>
                   )}
                 </section>
-                <ul className="ingredients">
-                  <span className="bold">Ingredients: </span>
-                  {renderIngredients()}
-                </ul>
-                <p>{cocktail.strInstructions}</p>
+                <section className="ingredients-directions">
+                  <p className="bold">Ingredients:</p>
+
+                  <ul className="ingredients">{renderIngredients()}</ul>
+                  <p className="bold">Instructions:</p>
+                  <p className="instructions">{cocktail.strInstructions}</p>
+                </section>
               </>
             )}
+
             {!detailed ? (
               isFavorite ? (
-                <span
-                  className="material-icons favoriteButton"
-                  onClick={handleRemove}
-                >
+                <span className="material-icons favoriteButton" onClick={handleRemove}>
                   favorite
                 </span>
               ) : (
-                <span
-                  className="material-icons favoriteButton"
-                  onClick={handleAdd}
-                >
+                <span className="material-icons favoriteButton" onClick={handleAdd}>
                   favorite_border
                 </span>
               )

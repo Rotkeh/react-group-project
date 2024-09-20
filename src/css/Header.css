@@ -1,7 +1,7 @@
 .header {
   background-color: #982b1c;
   margin: 0;
-  padding: 1rem 2rem 1rem 1rem;
+  padding: 0.5rem 1rem;
   top: 0;
   display: flex;
   justify-content: space-between;
@@ -15,12 +15,12 @@
     img {
       width: 15%;
       border-radius: 100%;
+      margin-left: 2rem;
     }
   }
   h1 {
-    /* padding: 1.2rem; */
     font-weight: 400;
-    font-size: min(max(42px, calc(2.625rem + ((1vw - 3px) * 2))), 64px);
+    font-size: min(max(42px, calc(2.625rem + ((1vw - 3px) * 2))), 60px);
     min-height: 0vw;
 
     margin: 0;
@@ -30,6 +30,7 @@
   .header-link {
     color: #f0cca4;
     display: block;
+    margin: 0.5rem;
     a {
       pointer-events: none;
       cursor: pointer;
@@ -40,7 +41,7 @@
     display: flex;
     gap: 1.5rem;
     a {
-      font-size: min(max(32px, calc(1.25rem + ((1vw - 3px) * 2.8011))), 40px);
+      font-size: min(max(32px, calc(1.25rem + ((1vw - 3px) * 2.8011))), 38px);
       font-family: "Rancho", cursive;
       gap: 1rem;
       color: #f0cca4;
@@ -64,10 +65,10 @@
       flex-direction: column;
       img {
         width: 30%;
+        margin: 0;
       }
     }
     h1 {
-      /* font-size: 3.5rem; */
       text-align: center;
     }
   }
