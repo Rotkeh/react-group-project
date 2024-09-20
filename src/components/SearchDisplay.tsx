@@ -15,7 +15,9 @@ export function SearchDisplay() {
 
   const [pagination, setPagination] = useState<boolean>(true);
 
-  const { cachedSearches, addCachedSearches } = useContext(CachedSearchesContext); // Får tillgång till cachade sökningar, eller lägger till mer
+  const { cachedSearches, addCachedSearches } = useContext(
+    CachedSearchesContext
+  ); // Får tillgång till cachade sökningar, eller lägger till mer
 
   useEffect(() => {
     const searchTerm = searchParams.get("s"); //Parametrarna hämtas som objekt för att få cocktailnamnet
@@ -32,7 +34,7 @@ export function SearchDisplay() {
         );
         const result = await response.json();
         addCachedSearches({ search: searchTerm!, cocktails: result.drinks }); // Cacha sökningen
-        setCocktails(result.drinks); // Uppdatera state-variabeln cocktails - Spara resultaten
+        return result.drinks; // Uppdatera state-variabeln cocktails - Spara resultaten
       } catch (error) {
         console.log(error);
         alert("failed to fetch data from the api");
@@ -94,7 +96,8 @@ export function SearchDisplay() {
           // Om en kategori redan valts, behåll endast de cocktails som matchar både kategori och glas. Detta görs genom att jämföra varje cocktail baserat på dess idDrink
           filtered = filtered.filter((filteredCocktail) =>
             glassCocktails.some(
-              (glassCocktail: ICocktail) => filteredCocktail.idDrink === glassCocktail.idDrink
+              (glassCocktail: ICocktail) =>
+                filteredCocktail.idDrink === glassCocktail.idDrink
             )
           );
         }
@@ -121,7 +124,8 @@ export function SearchDisplay() {
         } else {
           filtered = filtered.filter((filteredCocktail) =>
             alcoholCocktails.some(
-              (alcoholCocktail: ICocktail) => filteredCocktail.idDrink === alcoholCocktail.idDrink
+              (alcoholCocktail: ICocktail) =>
+                filteredCocktail.idDrink === alcoholCocktail.idDrink
             )
           );
         }
@@ -141,11 +145,13 @@ export function SearchDisplay() {
      *
      * @returns An array of filtered cocktail objects that match the applied filters.
      */
-    function filterCocktails() {
-      let filtered = cocktails;
+    function filterCocktails(cocktailsToFilter: ICocktail[]) {
+      let filtered = cocktailsToFilter;
       //if we have a category, filter out the cocktails that does not match it
       if (category) {
-        filtered = filtered.filter((cocktail) => cocktail.strCategory === category);
+        filtered = filtered.filter(
+          (cocktail) => cocktail.strCategory === category
+        );
       }
       if (glass) {
         filtered = filtered.filter((cocktail) => cocktail.strGlass === glass);
@@ -164,10 +170,14 @@ export function SearchDisplay() {
       }
 
       if (ingredient) {
-        filtered = filtered.filter((cocktail) => getIngredients(cocktail).includes(ingredient));
+        filtered = filtered.filter((cocktail) =>
+          getIngredients(cocktail).includes(ingredient)
+        );
       }
       if (alcohol) {
-        filtered = filtered.filter((cocktail) => cocktail.strAlcoholic === alcohol);
+        filtered = filtered.filter(
+          (cocktail) => cocktail.strAlcoholic === alcohol
+        );
       }
       return filtered;
     }
@@ -187,14 +197,22 @@ export function SearchDisplay() {
       //om en sökterm finns
       if (searchTerm) {
         setIsLoaded(false);
-        const cached = cachedSearches.find((cachedSearch) => cachedSearch.search === searchTerm);
+        const cached = cachedSearches.find(
+          (cachedSearch) => cachedSearch.search === searchTerm
+        );
         if (cached) {
-          setCocktails(cached.cocktails); // Använd cachade resultat om de finns
+          // Använd cachade resultat om de finns
+          if (category || glass || ingredient || alcohol) {
+            setCocktails(filterCocktails(cached.cocktails)); //Om ett eller flera filter är valda så filtrera de cachade cocktailsen
+          } else {
+            setCocktails(cached.cocktails); // Annars hämta alla från cachet
+          }
         } else {
-          await fetchDataFromSearch(); // Annars hämta från API:et
-        }
-        if (category || glass || ingredient || alcohol) {
-          setCocktails(filterCocktails); //Om ett eller flera filter är valda så filtrera sökningen baserat på dom
+          if (category || glass || ingredient || alcohol) {
+            setCocktails(filterCocktails(await fetchDataFromSearch())); //Om ett eller flera filter är valda så filtrera sökningen baserat på dom
+          } else {
+            setCocktails(await fetchDataFromSearch()); // Annars hämta från API:et
+          }
         }
         setTimeout(() => setIsLoaded(true), 1000);
       } else if (category || glass || ingredient || alcohol) {
@@ -223,7 +241,11 @@ export function SearchDisplay() {
             >
               {pagination ? "Show all" : "Show pagination"}
             </button>
-            {pagination ? <Pagination data={cocktails} /> : <InfiniteScroll data={cocktails} />}
+            {pagination ? (
+              <Pagination data={cocktails} />
+            ) : (
+              <InfiniteScroll data={cocktails} />
+            )}
           </>
         ) : searchParams.size > 0 ? (
           searchParams.get("s") ||
