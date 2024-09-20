@@ -196,7 +196,6 @@ export function SearchDisplay() {
       setIsLoaded(false);
       //om en sökterm finns
       if (searchTerm) {
-        setIsLoaded(false);
         const cached = cachedSearches.find(
           (cachedSearch) => cachedSearch.search === searchTerm
         );
@@ -216,8 +215,7 @@ export function SearchDisplay() {
         }
         setTimeout(() => setIsLoaded(true), 1000);
       } else if (category || glass || ingredient || alcohol) {
-        const filteredCocktails = await filterBySelections(); //Om det inte fanns någon sökterm men ett eller flera filter var valda så hämta data från API:et baserat på dessa
-        setCocktails(filteredCocktails);
+        setCocktails(await filterBySelections()); //Om det inte fanns någon sökterm men ett eller flera filter var valda så hämta data från API:et baserat på dessa
         setTimeout(() => setIsLoaded(true), 1000);
       } else {
         setCocktails([]); //Om ingen sökterm eller något filter var valt så töm cocktails
