@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CocktailCardProps, ICocktail } from "../interface";
 import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
@@ -7,11 +7,16 @@ import { fetchDataFromId } from "../loaders/InfoPageLoader";
 export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
   const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsFavorite(favorites.some((favorite) => favorite.idDrink === cocktail.idDrink));
   }, [cocktail]);
 
+  const handleClick = (ingredient: string, e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const target = e.target as HTMLLIElement;
+    if (target.className !== "material-icons favoriteButton") navigate(`/ingredient/${ingredient}`);
+  };
   const linkUrl = `/info/${cocktail.idDrink}`;
   // Funktion för att skapa en lista av ingredienser och mått
   const renderIngredients = () => {
@@ -24,7 +29,7 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
       //Om en ingrediens finns (dvs. inte är null), läggs den till i ingredienslistan tillsammans med sitt mått.
       if (ingredient) {
         ingredients.push(
-          <li key={i}>
+          <li className="ingredient" key={i} onClick={(e) => handleClick(ingredient, e)}>
             {measure ? `${measure} ` : ""}
             {ingredient}
           </li>
@@ -109,7 +114,7 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
                 </section>
                 <section className="ingredients-directions">
                   <p className="bold">Ingredients:</p>
-
+                  <p>(Click on ingredient for more info)</p>
                   <ul className="ingredients">{renderIngredients()}</ul>
                   <p className="bold">Instructions:</p>
                   <p className="instructions">{cocktail.strInstructions}</p>

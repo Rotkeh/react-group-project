@@ -50,6 +50,16 @@
     align-self: flex-start;
     margin-block-start: 10px;
     padding-inline-start: 20px;
+    margin-top: 0;
+
+    .ingredient {
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .ingredient:hover {
+      color: #982b1c;
+    }
   }
 
   @media (max-width: 600px) {
