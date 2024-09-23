@@ -1,9 +1,10 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import { App } from "./components";
-import { Home, SearchPage, CocktailInfo, Favorites, About } from "./pages";
+import { Home, SearchPage, CocktailInfo, Favorites, About, IngredientPage } from "./pages";
 import { NotFound } from "./pages/NotFound";
 import { fetchCocktail } from "./loaders/LandingPageLoader";
 import { fetchDataFromId } from "./loaders/InfoPageLoader";
+import { fetchDataFromName } from "./loaders/IngredientPageLoader";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ export const router = createBrowserRouter(
         loader={fetchDataFromId}
         errorElement={<NotFound />}
       />
+      <Route element={<IngredientPage/>} path="ingredient/:name" loader={fetchDataFromName} errorElement={<NotFound />}/> 
       <Route path="*" element={<NotFound />} />
     </Route>
   )
