@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     column-gap: 1em;
+    flex-wrap: wrap;
 
     @media (max-width: 600px) {
       flex-direction: column;
@@ -39,7 +40,7 @@
   option {
     font-family: "Arima Madurai", display;
   }
-  
+
   select {
     font-family: "Arima Madurai", display;
     font-size: 1rem;
