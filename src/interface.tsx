@@ -54,23 +54,23 @@ export interface ICocktail {
 }
 
 export interface IIngredient {
-  idIngredient: string,
-  strIngredient: string,
-  strDescription?: string,
-  strType?: string,
-  strAlcohol?: string,
-  strABV?: string
+  idIngredient: string;
+  strIngredient: string;
+  strDescription?: string;
+  strType?: string;
+  strAlcohol?: string;
+  strABV?: string;
 }
 
 export interface IngredientProps {
-  ingredient: IIngredient,
-  img: string,
-  cocktails: ICocktail[],
+  ingredient: IIngredient;
+  img: string;
+  cocktails: ICocktail[];
 }
 
-export interface IngredientLoaderDto {
-  ingredientInfo: IIngredient,
-  drinks: ICocktail[],
+export interface IngredientLoaderData {
+  ingredient: IIngredient;
+  drinks: ICocktail[];
 }
 
 export interface CocktailCardProps {
