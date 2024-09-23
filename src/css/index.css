@@ -228,16 +228,6 @@ footer {
   }
 }
 
-/*Ingredient page*/
-.ingredient-img {
-  width: 20rem;
-  height: auto;
-}
-
-.ingredient-description {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
 /*Scrollbar*/
 /* width */
 ::-webkit-scrollbar {

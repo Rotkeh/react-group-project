@@ -1,5 +1,95 @@
-.ingredient-drink {
-  .cocktail-body {
-    cursor: pointer;
+.ingredient-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .drink-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 10rem;
+
+    .ingredient-img {
+      width: 20rem;
+      height: auto;
+    }
+    .ingredient-description {
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    }
+  }
+
+  .ingredient-drink {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 3rem 6rem 0 6rem;
+    grid-auto-rows: auto;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .cocktail-card {
+      transition: transform 0.3s ease;
+    }
+    .cocktail-card:hover {
+      transform: scale(1.05);
+    }
+
+    .cocktail-body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      cursor: pointer;
+      justify-content: flex-end;
+
+      figure {
+        margin: 1rem;
+        box-sizing: border-box;
+      }
+
+      .cocktail-thumbnail {
+        width: 100%;
+        height: 100%;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin: 1rem 1rem 0 1rem;
+        text-align: center;
+
+        @media (max-width: 900px) {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr 1fr;
+      margin: 4rem 3rem 0 3rem;
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      margin: 4rem 1rem 0 1rem;
+    }
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cocktail-body {
+      cursor: pointer;
+      margin: 1rem;
+      max-width: 15rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      img {
+        width: 10rem;
+      }
+    } */
   }
 }

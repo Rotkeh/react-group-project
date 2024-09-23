@@ -16,7 +16,7 @@ export function IngredientCard({ ingredient, img, cocktails }: IngredientProps) 
     if (target.className !== "material-icons favoriteButton") navigate(`/info/${cocktail.idDrink}`);
   };
   return (
-    <main className="">
+    <section className="ingredient-container">
       <section className="drink-info">
         <img src={img} className="ingredient-img" alt={ingredient.strIngredient} />
         <h1>{ingredient.strIngredient}</h1>
@@ -42,17 +42,17 @@ export function IngredientCard({ ingredient, img, cocktails }: IngredientProps) 
       <section className="ingredient-drink">
         {showAll
           ? cocktails.map((c) => (
-              <div key={c.idDrink} onClick={(e) => handleClick(c, e)}>
+              <div className="cocktail-card" key={c.idDrink} onClick={(e) => handleClick(c, e)}>
                 <CocktailCard cocktail={c} detailed={false} showSeeMore={false} />
               </div>
             ))
-          : cocktails.slice(0, 10).map((c) => (
-              <div key={c.idDrink} onClick={(e) => handleClick(c, e)}>
+          : cocktails.slice(0, 12).map((c) => (
+              <div className="cocktail-card" key={c.idDrink} onClick={(e) => handleClick(c, e)}>
                 <CocktailCard cocktail={c} detailed={false} showSeeMore={false} />
               </div>
             ))}
       </section>
-    </main>
+    </section>
   );
 }
 
