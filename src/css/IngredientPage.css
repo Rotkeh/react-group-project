@@ -31,8 +31,6 @@
     margin: 2rem 10rem;
     border-radius: 10px;
     background-color: #f1ecdb34;
-    /* background-color: #b9875823; */
-    /* background-color: #b9635823; */
     padding: 1rem 2rem;
     border: 1px solid #b84e4079;
 
@@ -44,8 +42,8 @@
       width: 20rem;
       height: auto;
       align-self: center;
-      @media (max-width: 800px){
-        width: 50%;
+      @media (max-width: 800px) {
+        width: 60%;
       }
     }
     .ingredient-description {
