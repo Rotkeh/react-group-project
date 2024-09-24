@@ -3,3 +3,4 @@ export * from "./CocktailCard.css";
 export * from "./Pagination.css";
 export * from "./SearchForm.css";
 export * from "./IngredientPage.css"
+export * from "./About.css"
