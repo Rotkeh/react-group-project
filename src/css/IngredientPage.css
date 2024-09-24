@@ -37,13 +37,16 @@
     border: 1px solid #b84e4079;
 
     @media (max-width: 800px) {
-      margin: 2rem 5rem;
+      margin: 2rem 1rem;
     }
 
     .ingredient-img {
       width: 20rem;
       height: auto;
       align-self: center;
+      @media (max-width: 800px){
+        width: 50%;
+      }
     }
     .ingredient-description {
       font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
