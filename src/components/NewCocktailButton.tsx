@@ -1,5 +1,5 @@
 import { ICocktail } from "../interface";
-import { fetchCocktail } from "../loaders/LandingPageLoader";
+import { fetchCocktail } from "../loaders";
 
 // Prop för att returnera den hämtade drinken till förälder-komponeneten
 interface ButtonProps {

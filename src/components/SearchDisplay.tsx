@@ -2,9 +2,8 @@
 import { useContext, useEffect, useState } from "react";
 import { ICocktail } from "../interface";
 import { useSearchParams } from "react-router-dom";
-import { CachedSearchesContext } from "../context/CachedSearchesContext";
-import { Pagination } from "./Pagination";
-import { InfiniteScroll } from "./InfiniteScroll";
+import { CachedSearchesContext } from "../context";
+import { Pagination, InfiniteScroll } from "../components";
 
 export function SearchDisplay() {
   const [cocktails, setCocktails] = useState<ICocktail[]>([]); // Håller cocktails-resultaten, från API eller cachade

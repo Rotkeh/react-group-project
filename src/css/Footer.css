@@ -1,0 +1,35 @@
+footer {
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    font-family: "Arima Madurai", display;
+    background-color: #f1ecdb;
+  
+    .footer-links {
+      margin-top: 0.5rem;
+    }
+  
+    p {
+      margin-left: 1rem;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  
+    a {
+      font-size: 2rem;
+      font-family: "Arima Madurai", display;
+      font-weight: 500;
+    }
+    @media (max-width: 600px) {
+      justify-content: center;
+  
+      p {
+        display: none;
+      }
+      a {
+        font-size: 1.5rem;
+      }
+    }
+  }

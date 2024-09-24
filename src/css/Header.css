@@ -72,4 +72,7 @@
       text-align: center;
     }
   }
+  .hover-effect:hover {
+    transform: scale(1.1);
+  }
 }

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ICocktail } from "../interface";
-import { CocktailCard } from "./CocktailCard";
+import { CocktailCard } from "../components";
 import { useEffect, useState } from "react";
 
 interface IPaginationDataProps {

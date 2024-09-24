@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CocktailCardProps, ICocktail } from "../interface";
 import { useContext, useEffect, useState } from "react";
-import { FavoriteContext } from "../context/FavoriteContext";
-import { fetchDataFromId } from "../loaders/InfoPageLoader";
+import { FavoriteContext } from "../context";
+import { fetchDataFromId } from "../loaders";
 
 export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
   const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext);

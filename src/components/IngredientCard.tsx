@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ICocktail, IngredientProps } from "../interface";
-import { CocktailCard } from "./CocktailCard";
+import { CocktailCard } from "../components";
 import { useNavigate } from "react-router-dom";
 
 export function IngredientCard({ ingredient, img, cocktails }: IngredientProps) {

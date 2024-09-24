@@ -1,6 +1,9 @@
 # Cocktail-Wiki
 
+### Se sidan live: https://cocktaildbgroup1.netlify.app/
+
 <details>
+
   <summary>Innehållsförteckning</summary>
 
 - [Instruktioner](#instruktioner)

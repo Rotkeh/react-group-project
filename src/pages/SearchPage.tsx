@@ -1,5 +1,4 @@
-import { SearchForm } from "../components/SearchForm";
-import { SearchDisplay } from "../components/SearchDisplay";
+import { SearchForm, SearchDisplay } from "../components";
 
 export function SearchPage() {
   return (

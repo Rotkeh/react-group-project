@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ICocktail } from "../interface";
-import { Pagination } from "../components/Pagination";
-import { FavoriteContext } from "../context/FavoriteContext";
+import { Pagination } from "../components";
+import { FavoriteContext } from "../context";
 
 export function Favorites() {
   const [favoriteCocktails, setFavoriteCocktails] = useState<ICocktail[]>([]);

@@ -1,7 +1,6 @@
-import { CocktailCard } from "../components/CocktailCard";
+import { CocktailCard, NewCocktailButton } from "../components";
 import { useState } from "react";
 import { ICocktail } from "../interface";
-import { NewCocktailButton } from "../components/NewCocktailButton";
 import { useLoaderData } from "react-router-dom";
 
 export function Home() {

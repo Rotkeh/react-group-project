@@ -1,5 +1,5 @@
 import { IngredientLoaderData } from "../interface";
-import { IngredientCard } from "../components/IngredientCard";
+import { IngredientCard } from "../components";
 import { useLoaderData } from "react-router-dom";
 
 export function IngredientPage() {
@@ -8,13 +8,7 @@ export function IngredientPage() {
 
   return (
     <main>
-      {ingredient && (
-        <IngredientCard
-          ingredient={ingredient}
-          img={imgUrl}
-          cocktails={drinks}
-        />
-      )}
+      {ingredient && <IngredientCard ingredient={ingredient} img={imgUrl} cocktails={drinks} />}
     </main>
   );
 }
