@@ -13,9 +13,9 @@
     align-items: center;
     gap: 1rem;
     img {
-      width: 15%;
+      width: 17%;
       border-radius: 100%;
-      margin-left: 2rem;
+      margin-left: 1rem;
     }
   }
   h1 {
