@@ -7,6 +7,12 @@
   .ingredient-title {
     font-family: "Arima Madurai", display;
     margin: 2rem 0 1rem;
+    font-size: 2.8rem;
+    align-self: center;
+
+    @media (max-width: 600px) {
+      font-size: 2.2rem;
+    }
   }
 
   h3 {
@@ -21,8 +27,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin: 2rem 10rem;
+    border-radius: 10px;
+    background-color: #f1ecdb34;
+    /* background-color: #b9875823; */
+    /* background-color: #b9635823; */
+    padding: 1rem 2rem;
+    border: 1px solid #b84e4079;
 
     @media (max-width: 800px) {
       margin: 2rem 5rem;
@@ -31,6 +43,7 @@
     .ingredient-img {
       width: 20rem;
       height: auto;
+      align-self: center;
     }
     .ingredient-description {
       font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -47,6 +60,11 @@
 
     .cocktail-card {
       transition: transform 0.3s ease;
+      margin-bottom: 3rem;
+      @media (max-width: 600px) {
+        width: 80%;
+        justify-self: center;
+      }
     }
     .cocktail-card:hover {
       transform: scale(1.05);
@@ -79,7 +97,7 @@
         }
       }
     }
-    
+
     @media (max-width: 1100px) {
       grid-template-columns: 1fr 1fr 1fr;
       margin: 4rem 3rem 0 3rem;
@@ -93,25 +111,5 @@
       grid-template-columns: 1fr;
       margin: 4rem 1rem 0 1rem;
     }
-    /* display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    @media (max-width: 700px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .cocktail-body {
-      cursor: pointer;
-      margin: 1rem;
-      max-width: 15rem;
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      img {
-        width: 10rem;
-      }
-    } */
   }
 }
