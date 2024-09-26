@@ -5,7 +5,7 @@ import { FavoriteContext } from "../context";
 import { fetchDataFromId } from "../loaders";
 
 export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: CocktailCardProps) {
-  const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext);
+  const { favorites, addFavorite, removeFavorite } = useContext(FavoriteContext); //Kommer från context-filen
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
   const navigate = useNavigate();
 
@@ -80,7 +80,7 @@ export function CocktailCard({ detailed = true, showSeeMore = true, cocktail }: 
               ""
             )}
 
-            {/* Visa detaljer bara om detailed är true */}
+            {/* Visa detaljer bara om detailed är true, alltså i CocktailInfo.tsx */}
             {detailed && (
               <>
                 <section className="drink-container">

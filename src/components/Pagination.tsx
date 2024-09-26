@@ -17,17 +17,13 @@ export function Pagination({ data }: IPaginationDataProps) {
 
   const totalPages = Math.ceil(data.length / 10); //Beräkning hur många sidor som kommer finnas totalt - data (antalet cocktails) / 10. Math.ceil för att avrunda uppåt
 
-  const startIndex = (currentPage - 1) * 10;
-  const currentItems = data.slice(startIndex, startIndex + 10);
+  const startIndex = (currentPage - 1) * 10; // Beräknar indexet för den första cocktailen på den aktuella sidan. Första sidan har index 0-9, andra sidan har index 10-19 osv.
+  const currentItems = data.slice(startIndex, startIndex + 10); // Tar en slice av data-arrayen och innehåller bara de cocktails som ska visas på den aktuella sidan.
 
   //when a cocktail is clicked navigate to the info page of that cocktail
-  const handleClick = (
-    cocktail: ICocktail,
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleClick = (cocktail: ICocktail, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLElement;
-    if (target.className !== "material-icons favoriteButton")
-      navigate(`/info/${cocktail.idDrink}`);
+    if (target.className !== "material-icons favoriteButton") navigate(`/info/${cocktail.idDrink}`);
   };
 
   // returns the index buttons depending on the amount of results
@@ -73,11 +69,7 @@ export function Pagination({ data }: IPaginationDataProps) {
             className="cocktail-card"
             onClick={(e) => handleClick(cocktail, e)}
           >
-            <CocktailCard
-              showSeeMore={false}
-              cocktail={cocktail}
-              detailed={false}
-            />
+            <CocktailCard showSeeMore={false} cocktail={cocktail} detailed={false} />
           </div>
         ))}
       </section>
