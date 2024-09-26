@@ -3,9 +3,11 @@ import { LoaderFunctionArgs } from "react-router-dom";
 export const fetchDataFromName = async ({ params }: LoaderFunctionArgs) => {
   const name = params.name;
   try {
+    //För ingrediensinformation: Detta anrop hämtar all info om en ingrediens, som namn, typ, alkoholhalt osv.
     const response1 = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
     );
+    //För cocktails som innehåller ingrediensen: Det andra API-anropet hämtar cocktails som har den här ingrediensen.
     const response2 = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
     );

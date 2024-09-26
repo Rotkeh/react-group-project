@@ -4,13 +4,14 @@ import { CocktailCard } from "../components";
 import { useNavigate } from "react-router-dom";
 
 export function IngredientCard({ ingredient, img, cocktails }: IngredientProps) {
-  const [showAll, setShowAll] = useState<boolean>(false);
+  const [showAll, setShowAll] = useState<boolean>(false); //Visa alla drinkar som innehåller ingredientsen eller de första 12 från API:t
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []); //Rullar sidan till toppen när komponenten renderas
 
+  //Navigera till drinken om mann trycker på dess kort
   const handleClick = (cocktail: ICocktail, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLElement;
     if (target.className !== "material-icons favoriteButton") navigate(`/info/${cocktail.idDrink}`);

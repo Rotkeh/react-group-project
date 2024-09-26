@@ -12,7 +12,7 @@ export function SearchDisplay() {
 
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  const [pagination, setPagination] = useState<boolean>(true);
+  const [pagination, setPagination] = useState<boolean>(true); // Paginering eller visa alla i infinite scroll
 
   const { cachedSearches, addCachedSearches } = useContext(CachedSearchesContext); // Får tillgång till cachade sökningar, eller lägger till mer
 
